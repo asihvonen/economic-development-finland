@@ -1378,7 +1378,7 @@
       "type": "Feature", 
       "properties": {
         "source": "https://simplemaps.com", 
-        "id": "FI01", 
+        "id": "FI21", 
         "name": "Åland"
       }, 
       "id": 1
@@ -4058,7 +4058,7 @@
       "type": "Feature", 
       "properties": {
         "source": "https://simplemaps.com", 
-        "id": "FI10", 
+        "id": "FI19", 
         "name": "Lapland"
       }, 
       "id": 2
@@ -6348,7 +6348,7 @@
       "type": "Feature", 
       "properties": {
         "source": "https://simplemaps.com", 
-        "id": "FI14", 
+        "id": "FI17", 
         "name": "Northern Ostrobothnia"
       }, 
       "id": 3
@@ -7392,7 +7392,7 @@
       "type": "Feature", 
       "properties": {
         "source": "https://simplemaps.com", 
-        "id": "FI05", 
+        "id": "FI18", 
         "name": "Kainuu"
       }, 
       "id": 4
@@ -8308,7 +8308,7 @@
       "type": "Feature", 
       "properties": {
         "source": "https://simplemaps.com", 
-        "id": "FI13", 
+        "id": "FI12", 
         "name": "North Karelia"
       }, 
       "id": 5
@@ -8968,7 +8968,7 @@
       "type": "Feature", 
       "properties": {
         "source": "https://simplemaps.com", 
-        "id": "FI02", 
+        "id": "FI09", 
         "name": "South Karelia"
       }, 
       "id": 6
@@ -10210,7 +10210,7 @@
       "type": "Feature", 
       "properties": {
         "source": "https://simplemaps.com", 
-        "id": "FI09", 
+        "id": "FI08", 
         "name": "Kymenlaakso"
       }, 
       "id": 7
@@ -12500,7 +12500,7 @@
       "type": "Feature", 
       "properties": {
         "source": "https://simplemaps.com", 
-        "id": "FI18", 
+        "id": "FI01", 
         "name": "Uusimaa"
       }, 
       "id": 8
@@ -16690,7 +16690,7 @@
       "type": "Feature", 
       "properties": {
         "source": "https://simplemaps.com", 
-        "id": "FI19", 
+        "id": "FI02", 
         "name": "Finland Proper"
       }, 
       "id": 9
@@ -18144,7 +18144,7 @@
       "type": "Feature", 
       "properties": {
         "source": "https://simplemaps.com", 
-        "id": "FI17", 
+        "id": "FI04", 
         "name": "Satakunta"
       }, 
       "id": 10
@@ -21426,7 +21426,7 @@
       "type": "Feature", 
       "properties": {
         "source": "https://simplemaps.com", 
-        "id": "FI12", 
+        "id": "FI15", 
         "name": "Ostrobothnia"
       }, 
       "id": 11
@@ -22122,7 +22122,7 @@
       "type": "Feature", 
       "properties": {
         "source": "https://simplemaps.com", 
-        "id": "FI07", 
+        "id": "FI16", 
         "name": "Central Ostrobothnia"
       }, 
       "id": 12
@@ -23378,7 +23378,7 @@
       "type": "Feature", 
       "properties": {
         "source": "https://simplemaps.com", 
-        "id": "FI15", 
+        "id": "FI11", 
         "name": "Northern Savonia"
       }, 
       "id": 13
@@ -24918,7 +24918,7 @@
       "type": "Feature", 
       "properties": {
         "source": "https://simplemaps.com", 
-        "id": "FI04", 
+        "id": "FI10", 
         "name": "Southern Savonia"
       }, 
       "id": 14
@@ -26570,7 +26570,7 @@
       "type": "Feature", 
       "properties": {
         "source": "https://simplemaps.com", 
-        "id": "FI08", 
+        "id": "FI13", 
         "name": "Central Finland"
       }, 
       "id": 15
@@ -27810,7 +27810,7 @@
       "type": "Feature", 
       "properties": {
         "source": "https://simplemaps.com", 
-        "id": "FI03", 
+        "id": "FI14", 
         "name": "Southern Ostrobothnia"
       }, 
       "id": 16
@@ -29134,7 +29134,7 @@
       "type": "Feature", 
       "properties": {
         "source": "https://simplemaps.com", 
-        "id": "FI11", 
+        "id": "FI06", 
         "name": "Pirkanmaa"
       }, 
       "id": 17
@@ -29982,7 +29982,7 @@
       "type": "Feature", 
       "properties": {
         "source": "https://simplemaps.com", 
-        "id": "FI06", 
+        "id": "FI05", 
         "name": "Tavastia Proper"
       }, 
       "id": 18
@@ -30966,7 +30966,7 @@
       "type": "Feature", 
       "properties": {
         "source": "https://simplemaps.com", 
-        "id": "FI16", 
+        "id": "FI07", 
         "name": "Päijät-Häme"
       }, 
       "id": 19
