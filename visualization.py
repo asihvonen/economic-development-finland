@@ -1,6 +1,32 @@
+import numpy as np
+import pandas as pd
 import plotly.express as px
 import matplotlib.pyplot as plt
-import numpy as np
+
+
+def plot_k_means_pca(economic_factors: pd.DataFrame):
+    """
+    Plot the results of k-means clustering in PCA space.
+    Args:
+        economic_factors : pd.DataFrame
+            Dataframe which contains the columns:
+            - The selected economic factors, scaled
+            - Region
+            - Year
+            - PCA1
+            - PCA2
+            - Cluster
+    """
+    fig = px.scatter(
+        economic_factors,
+        x="PCA1",
+        y="PCA2",
+        color="Cluster",
+        hover_data=["PCA1", "PCA2", "Region", "Year"],
+        title="K-Means Clustering Results in PCA Space"
+    )
+    fig.show()
+
 
 def plot_economic_factor(df, factor):
     """
@@ -8,7 +34,7 @@ def plot_economic_factor(df, factor):
     for the given economic factor.
     
     Args:
-        df : pandas.DataFrame
+        df: pandas.DataFrame
             DataFrame with columns ["Region", "Year", <economic factors>].
         factor : str
             Name of the economic factor column to plot.
@@ -30,6 +56,7 @@ def plot_economic_factor(df, factor):
     )
     
     fig.show()
+
 
 def plot_spider_chart(categories: list, values: list[list], labels: list):
     """
