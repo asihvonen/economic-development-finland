@@ -17,12 +17,11 @@ df_raw = df_raw[(df_raw['Year'] > 2010) & (df_raw['Year'] < 2022)]
 
 TARGET_VARIABLE = 'GDP per capita (euro at current prices)'  
 FEATURE_VARIABLES = [
-    'A Agriculture, forestry and fishing (TP)',
     'H Transportation and storage (TP)', 
-    'Unemployed jobseekers',
-    'Mean of debt for all debts',
-    'With education, total (population)',
-    'Gross value added (millions of euro), F Construction (41-43)',
+    'Gross value added (millions of euro), H Transportation and storage (49-53)',
+    'Q Human health and social work activities (TP)',
+    'Gross value added (millions of euro), Q Human health and social work activities (86-88)',
+    #'45 - 49 Total (population)',
     # 'ImportGrowth',
     # 'TradeBalance',
     # 'DebtToGDP',
