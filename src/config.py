@@ -1,1 +1,1 @@
-hg_token = "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"
+hg_token = ""
