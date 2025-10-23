@@ -6,6 +6,8 @@ from prophet.plot import plot_plotly, plot_components_plotly
 import plotly.io as pio
 from pathlib import Path
 import streamlit.components.v1 as components
+from openai import OpenAI
+from config import hg_token
 # CONFIG
 st.set_page_config(
     page_title="GDP Dashboard",
@@ -55,26 +57,75 @@ LIST_OF_MAPS = [
 ]
 MAP_NAMES = ["Disposable Income", "GDP per capita", "Unemployement", "RnD"]
 
+# '=========================================================================='
+# LLM MODEL
+# '=========================================================================='
+# --- HUGGING FACE API SETUP ---
+client = OpenAI(
+    base_url="https://router.huggingface.co/v1",
+    api_key=hg_token,
+)
 
-# '==========================================================================='
+def get_llm_response(user_message):
+    """Call the HF OpenAI-compatible API and return the assistant's message."""
+    completion = client.chat.completions.create(
+        model="swiss-ai/Apertus-8B-Instruct-2509:publicai",
+        messages=[
+            {"role": "user", "content": user_message}
+        ],
+    )
+    return completion.choices[0].message["content"]
+
+
+
+# '=========================================================================='
 # 'START OF SECTION 1'
 # '=========================================================================='
-st.header("Model fit to data")
+st.markdown(
+        f"<h2 style='font-size:45px; text-align:center; color:#FFFFFF; font-weight:bold'>Models fit to data</h2>", 
+        unsafe_allow_html=True
+    )
 
 plots = {
     "ARIMA": "visualizations/arima_forecast.html",
     "Prophet": "visualizations/prophet_forecast.html",
+    "ASTAR (autoregressive MARS)" :  "visualizations/mars_forecast.html",
 }
 # Dropdown menu with different plots
 choice = st.selectbox("Select a model:", list(plots.keys()))
 html_file = load_html_plot(plots[choice])
+# Sketchy solution for resizing
 responsive_html = f"""
-<div style="width:100%; height:600px;">
-    {html_file.replace('width:800', 'width:100%').replace('height:600', 'height:100%')}
+<div id="plot-container" style="width:100%; height:90vh; margin:auto;">
+    {html_file}
 </div>
+
+<script>
+    function resizePlot() {{
+        const container = document.getElementById('plot-container');
+        const plot = container.querySelector('.plotly-graph-div');
+        if (!plot) return;
+
+        // Read actual container dimensions
+        const w = container.clientWidth;
+        const h = container.clientHeight;
+
+        // Resize Plotly plot to match container
+        if (window.Plotly) {{
+            window.Plotly.relayout(plot, {{
+                width: w,
+                height: h
+            }});
+        }}
+    }}
+
+    // Run on load and whenever window resizes
+    window.addEventListener('load', resizePlot);
+    window.addEventListener('resize', resizePlot);
+</script>
 """
 
-components.html(responsive_html, height=630, scrolling=False)
+components.html(responsive_html, height=900, scrolling=False)
 
 
 
@@ -129,10 +180,12 @@ with col2:
 
     # --- HANDLE INPUT ---
     if submitted and user_input:
-        response = f"LLM answer to: {user_input}"  # Replace with actual LLM logic
+        # Get response from HF API
+        response = get_llm_response(user_input)
+
+        # Add to chat history
         st.session_state.chat_history.append({"role": "user", "message": user_input})
         st.session_state.chat_history.append({"role": "llm", "message": response})
-
     # --- DISPLAY CHAT HISTORY ---
     chat_html = """
     <div style='height:500px; overflow-y:auto; padding:10px; border:1px solid #ddd; 
