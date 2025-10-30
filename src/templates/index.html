@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Interactive Map & Chat</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<div class="container">
+
+    <!-- LEFT SIDE: MAP -->
+    <div class="left">
+        <div class="map-header">
+            <select id="map-select">
+                <option value="disposable_income" {% if current_map=='disposable_income' %}selected{% endif %}>Disposable Income</option>
+                <option value="GDP_per_cap" {% if current_map=='GDP_per_cap' %}selected{% endif %}>GDP per capita</option>
+                <option value="unemployed" {% if current_map=='unemployed' %}selected{% endif %}>Unemployment</option>
+                <option value="RnD" {% if current_map=='RnD' %}selected{% endif %}>R&D</option>
+            </select>
+        </div>
+
+        <div class="map-container">
+            <iframe id="map-iframe" src="/map?type={{ current_map }}" style="width: 100%; height: 100%; border: none;"></iframe>
+        </div>
+    </div>
+
+    <!-- RIGHT SIDE: CHAT -->
+    <div class="right">
+        <div id="chat-box" class="chat-box"></div>
+        <div class="chat-input">
+            <input id="user-input" type="text" placeholder="Type your message..." onkeydown="if(event.key==='Enter'){sendMessage()}">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Update iframe src when map type changes (no page reload)
+    document.getElementById('map-select').addEventListener('change', function() {
+        const mapType = this.value;
+        document.getElementById('map-iframe').src = `/map?type=${mapType}`;
+    });
+
+    async function sendMessage() {
+        const input = document.getElementById("user-input");
+        const chatBox = document.getElementById("chat-box");
+        const message = input.value.trim();
+        if (!message) return;
+
+        // Prepend user message (appears at bottom due to column-reverse)
+        chatBox.insertAdjacentHTML('afterbegin', `<p class="user"><b>You:</b> ${message}</p>`);
+        input.value = "";
+
+        // Fetch model response
+        const res = await fetch("/chat", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({message})
+        });
+
+        const data = await res.json();
+        
+        // Prepend bot response (appears at bottom)
+        chatBox.insertAdjacentHTML('afterbegin', `<p class="bot"><b>Bot:</b> ${data.response}</p>`);
+        
+        // Ensure scrolled to bottom (flex start in reverse mode)
+        chatBox.scrollTop = 0;
+    }
+</script>
+</body>
+</html>
