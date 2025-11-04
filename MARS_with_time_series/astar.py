@@ -3,7 +3,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from dataclasses import dataclass
 from typing import List, Tuple, Optional
-
+import plotly.graph_objects as go
+from plotly.subplots import make_subplots
 # ============================================================================
 # DATA
 # ============================================================================
@@ -17,12 +18,11 @@ df_raw = df_raw[(df_raw['Year'] > 2010) & (df_raw['Year'] < 2022)]
 
 TARGET_VARIABLE = 'GDP per capita (euro at current prices)'  
 FEATURE_VARIABLES = [
-    'A Agriculture, forestry and fishing (TP)',
     'H Transportation and storage (TP)', 
-    'Unemployed jobseekers',
-    'Mean of debt for all debts',
-    'With education, total (population)',
-    'Gross value added (millions of euro), F Construction (41-43)',
+    'Gross value added (millions of euro), H Transportation and storage (49-53)',
+    'Q Human health and social work activities (TP)',
+    'Gross value added (millions of euro), Q Human health and social work activities (86-88)',
+    #'45 - 49 Total (population)',
     # 'ImportGrowth',
     # 'TradeBalance',
     # 'DebtToGDP',
@@ -259,36 +259,60 @@ years_with_lags = df_raw['Year'].iloc[MAX_LAGS:].values
 train_years = years_with_lags[:split_idx]
 test_years = years_with_lags[split_idx:]
 
-fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(14, 10))
+fig = make_subplots(
+    rows=2, cols=1,
+    shared_xaxes=True,
+    vertical_spacing=0.15,
+    subplot_titles=[f'MARS Time Series Forecast: {TARGET_VARIABLE}', 'Prediction Residuals']
+)
 
-# Plot 1: Full time series
-ax1.plot(train_years, y_train, 'o-', label='Training Actual', alpha=0.7, markersize=4)
-ax1.plot(test_years, y_test, 's-', label='Test Actual', alpha=0.7, markersize=4)
-ax1.plot(train_years, y_train_pred, '--', label='Training Predicted', alpha=0.8, linewidth=2)
-ax1.plot(test_years, y_test_pred, '--', label='Test Predicted', alpha=0.8, linewidth=2)
-ax1.axvline(train_years[-1], color='red', linestyle=':', label='Train/Test Split', linewidth=2)
-ax1.set_xlabel('Year', fontsize=11)
-ax1.set_ylabel(TARGET_VARIABLE, fontsize=11)
-ax1.set_title(f'MARS Time Series Forecast: {TARGET_VARIABLE}', fontsize=13, fontweight='bold')
-ax1.legend(loc='best')
-ax1.grid(True, alpha=0.3)
+# --- Plot 1: Full time series ---
+fig.add_trace(go.Scatter(
+    x=train_years, y=y_train,
+    mode='lines+markers',
+    name='Training Actual',
+    marker=dict(size=6, symbol='circle'),
+    line=dict(width=2),
+    opacity=0.7
+), row=1, col=1)
 
-# Plot 2: Residuals
-train_residuals = y_train - y_train_pred
-test_residuals = y_test - y_test_pred
+fig.add_trace(go.Scatter(
+    x=test_years, y=y_test,
+    mode='lines+markers',
+    name='Test Actual',
+    marker=dict(size=6, symbol='square'),
+    line=dict(width=2),
+    opacity=0.7
+), row=1, col=1)
 
-ax2.scatter(train_years, train_residuals, label='Train Residuals', alpha=0.6)
-ax2.scatter(test_years, test_residuals, label='Test Residuals', alpha=0.6, marker='s')
-ax2.axhline(0, color='black', linestyle='-', linewidth=1)
-ax2.axvline(train_years[-1], color='red', linestyle=':', linewidth=2)
-ax2.set_xlabel('Year', fontsize=11)
-ax2.set_ylabel('Residual', fontsize=11)
-ax2.set_title('Prediction Residuals', fontsize=12, fontweight='bold')
-ax2.legend(loc='best')
-ax2.grid(True, alpha=0.3)
+fig.add_trace(go.Scatter(
+    x=train_years, y=y_train_pred,
+    mode='lines',
+    name='Training Predicted',
+    line=dict(width=3, dash='dash'),
+    opacity=0.8
+), row=1, col=1)
 
-plt.tight_layout()
-plt.show()
+fig.add_trace(go.Scatter(
+    x=test_years, y=y_test_pred,
+    mode='lines',
+    name='Test Predicted',
+    line=dict(width=3, dash='dash'),
+    opacity=0.8
+), row=1, col=1)
+
+# Vertical line for train/test split
+fig.add_trace(go.Scatter(
+    x=[train_years[-1], train_years[-1]],
+    y=[min(min(y_train), min(y_test_pred)), max(max(y_train), max(y_test_pred))],
+    mode='lines',
+    name='Train/Test Split',
+    line=dict(color='red', dash='dot', width=2)
+), row=1, col=1)
+
+# Save as HTML
+fig.write_html("visualizations/mars_forecast.html")
+print("Plot saved as 'mars_forecast.html'.")
 
 # Optional: Feature importance (based on coefficient magnitudes)
 print("\n" + "="*60)

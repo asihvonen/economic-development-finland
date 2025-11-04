@@ -26,7 +26,15 @@ FEATURE_VARIABLES.remove('Year')
 FEATURE_VARIABLES.remove('Region')
 FEATURE_VARIABLES.remove('Municipality')
 FEATURE_VARIABLES.remove(TARGET_VARIABLE)
-FEATURE_VARIABLES = [f for f in FEATURE_VARIABLES if not f.startswith("Gross value added")]
+FEATURE_VARIABLES = [
+    f for f in FEATURE_VARIABLES 
+    if not (
+        "population" in f or 
+        "TP" in f or 
+        "Population" in f or
+        "POPULATION" in f
+    )
+]
 MAX_LAGS = 2
 TRAIN_FRACTION = 0.6
 ADD_CYCLICAL_FEATURES = False
