@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, jsonify, abort
 from openai import OpenAI
 from pathlib import Path
 from config import hg_token
-
+from map_update import map_script
 app = Flask(__name__)
 
 # --- Hugging Face OpenAI-compatible API ---
@@ -46,11 +46,26 @@ def chat():
         #     messages=[{"role": "user", "content": user_message}],
         # )
         # response = completion.choices[0].message["content"]
-        response = "This is a placeholder response."
+        response = ["Gross value added (millions of euro), A Agriculture, forestry and fishing", "-15%"]
+        
+        # Create new map using map_script
+        industry, change = response
+        change_value = float(change.strip('%')) / 100  # Convert percentage to decimal
+        
+        # Initialize map_script with region (you might want to make this dynamic)
+        map_handler = map_script(region_id=1, value_being_shown="GDP per capita (euro)")
+        
+        # Update the map
+        map_handler.update_map(industry, change_value)
+        # Add the new map to available maps
+        LIST_OF_MAPS["updated"] = "visualizations/updated_map.html"
     except Exception as e:
         response = f"Error: {e}"
 
-    return jsonify({"response": response})
+    return jsonify({
+        "response": response,
+        "map_type": "updated"
+        })
 
 if __name__ == "__main__":
     app.run(debug=True)
