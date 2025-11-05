@@ -12,9 +12,9 @@
     <div class="left">
         <div class="map-header">
             <select id="map-select">
-                <option value="disposable_income" {% if current_map=='disposable_income' %}selected{% endif %}>Disposable Income</option>
-                <option value="GDP_per_cap" {% if current_map=='GDP_per_cap' %}selected{% endif %}>GDP per capita</option>
-                <option value="unemployed" {% if current_map=='unemployed' %}selected{% endif %}>Unemployment</option>
+                <option value="disposable_income" {% if current_map=='disposable_income' %}selected{% endif %}>Disposable income, net (euro)</option>
+                <option value="GDP_per_cap" {% if current_map=='GDP_per_cap' %}selected{% endif %}>GDP per capita (euro)</option>
+                <option value="unemployed" {% if current_map=='unemployed' %}selected{% endif %}>Unemployed (Population)</option>
                 <option value="RnD" {% if current_map=='RnD' %}selected{% endif %}>R&D</option>
             </select>
         </div>
@@ -40,7 +40,10 @@
         const mapType = this.value;
         document.getElementById('map-iframe').src = `/map?type=${mapType}`;
     });
-
+    function getCurrentMapName() {
+        const select = document.getElementById('map-select');
+        return select.options[select.selectedIndex].text;
+    }
     async function sendMessage() {
         const input = document.getElementById("user-input");
         const chatBox = document.getElementById("chat-box");
@@ -58,7 +61,7 @@
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ message: message }),  // Fixed: was 'userInput'
+                body: JSON.stringify({ message: message, current_map: getCurrentMapName() }),  // Fixed: was 'userInput'
             });
 
             const data = await res.json();

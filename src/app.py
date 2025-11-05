@@ -39,21 +39,21 @@ def get_map():
 def chat():
     data = request.get_json()
     user_message = data.get("message", "")
-
+    current_map_key = data.get("current_map", "GDP per capita (euro)")
     try:
         # completion = client.chat.completions.create(
         #     model="swiss-ai/Apertus-8B-Instruct-2509:publicai",
         #     messages=[{"role": "user", "content": user_message}],
         # )
         # response = completion.choices[0].message["content"]
-        response = ["Gross value added (millions of euro), A Agriculture, forestry and fishing", "-15%"]
+        response = ["Gross value added (millions of euro), H Transportation and storage", "-35%"]
         
         # Create new map using map_script
         industry, change = response
         change_value = float(change.strip('%')) / 100  # Convert percentage to decimal
         
         # Initialize map_script with region (you might want to make this dynamic)
-        map_handler = map_script(region_id=1, value_being_shown="GDP per capita (euro)")
+        map_handler = map_script(region_id=1, value_being_shown=current_map_key)
         
         # Update the map
         map_handler.update_map(industry, change_value)
