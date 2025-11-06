@@ -12,9 +12,9 @@
     <div class="left">
         <div class="map-header">
             <select id="map-select">
-                <option value="disposable_income" {% if current_map=='disposable_income' %}selected{% endif %}>Disposable Income</option>
-                <option value="GDP_per_cap" {% if current_map=='GDP_per_cap' %}selected{% endif %}>GDP per capita</option>
-                <option value="unemployed" {% if current_map=='unemployed' %}selected{% endif %}>Unemployment</option>
+                <option value="disposable_income" {% if current_map=='disposable_income' %}selected{% endif %}>Disposable income, net (euro)</option>
+                <option value="GDP_per_cap" {% if current_map=='GDP_per_cap' %}selected{% endif %}>GDP per capita (euro)</option>
+                <option value="unemployed" {% if current_map=='unemployed' %}selected{% endif %}>Unemployed (Population)</option>
                 <option value="RnD" {% if current_map=='RnD' %}selected{% endif %}>R&D</option>
             </select>
         </div>
@@ -40,31 +40,48 @@
         const mapType = this.value;
         document.getElementById('map-iframe').src = `/map?type=${mapType}`;
     });
-
+    function getCurrentMapName() {
+        const select = document.getElementById('map-select');
+        return select.options[select.selectedIndex].text;
+    }
     async function sendMessage() {
         const input = document.getElementById("user-input");
         const chatBox = document.getElementById("chat-box");
         const message = input.value.trim();
         if (!message) return;
 
-        // Prepend user message (appears at bottom due to column-reverse)
+        // Prepend user message
         chatBox.insertAdjacentHTML('afterbegin', `<p class="user"><b>You:</b> ${message}</p>`);
         input.value = "";
 
-        // Fetch model response
-        const res = await fetch("/chat", {
-            method: "POST",
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({message})
-        });
+        try {
+            // Fetch model response
+            const res = await fetch("/chat", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ message: message, current_map: getCurrentMapName() }),  // Fixed: was 'userInput'
+            });
 
-        const data = await res.json();
-        
-        // Prepend bot response (appears at bottom)
-        chatBox.insertAdjacentHTML('afterbegin', `<p class="bot"><b>Bot:</b> ${data.response}</p>`);
-        
-        // Ensure scrolled to bottom (flex start in reverse mode)
-        chatBox.scrollTop = 0;
+            const data = await res.json();
+            
+            // Prepend bot response
+            chatBox.insertAdjacentHTML('afterbegin', `<p class="bot"><b>Bot:</b> ${data.response}</p>`);
+            
+            // Update map if new map type provided
+            if (data.map_type) {
+                document.getElementById('map-iframe').src = `/map?type=${data.map_type}`;
+                document.getElementById('map-select').value = data.map_type;
+            }
+            
+            // Ensure scrolled to bottom
+            chatBox.scrollTop = 0;
+            
+        } catch (error) {
+            console.error('Error:', error);
+            chatBox.insertAdjacentHTML('afterbegin', `<p class="bot"><b>Error:</b> ${error.message}</p>`);
+        }
     }
 </script>
 </body>
