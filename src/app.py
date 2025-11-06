@@ -1,15 +1,9 @@
 from flask import Flask, render_template, request, jsonify, abort
-from openai import OpenAI
 from pathlib import Path
 from config import hg_token
+from llm import LLM
 
 app = Flask(__name__)
-
-# --- Hugging Face OpenAI-compatible API ---
-client = OpenAI(
-    base_url="https://router.huggingface.co/v1",
-    api_key=hg_token,
-)
 
 LIST_OF_MAPS = {
     "disposable_income": "visualizations/disposable_income.html",
@@ -41,12 +35,8 @@ def chat():
     user_message = data.get("message", "")
 
     try:
-        # completion = client.chat.completions.create(
-        #     model="swiss-ai/Apertus-8B-Instruct-2509:publicai",
-        #     messages=[{"role": "user", "content": user_message}],
-        # )
-        # response = completion.choices[0].message["content"]
-        response = "This is a placeholder response."
+        llm = LLM()
+        response = llm.analyze_scenario(scenario = user_message, region_specific=False)
     except Exception as e:
         response = f"Error: {e}"
 
