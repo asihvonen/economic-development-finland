@@ -15,44 +15,75 @@ class map_script:
         self.df_corr = pd.read_csv(f"data/correlation/sector_correlation_region_{self.region}.csv", index_col=0)
         self.all_regions = self.df_data['Region'].unique().tolist()
         self.value_being_shown_name = value_being_shown
+        self.value_corr = pd.read_csv("data/correlation/income_gdp_correlation_all_regions.csv")
+        self.ratio = pd.read_csv("data/region_gva_ratio_stats.csv")
     def update_map(self,most_affected_industry,change):
-        #print(f"Available regions in df: {self.all_regions}")    
-        features = self.df_corr[most_affected_industry].abs().sort_values(ascending=False).head(5).index.tolist()[1:] # find top 5 correlated industries      
-        #print(f"Top 5 features for industry {most_affected_industry}: {features}")
+        # find top 5 correlated industries  
+        features = self.df_corr[most_affected_industry].abs().sort_values(ascending=False).head(5).index.tolist()[1:]     
         base_corr = self.df_corr.loc[features, most_affected_industry].abs().values
-        similarities = []
+        industries = []
         for region in self.all_regions:
             try:
                 df = pd.read_csv(f"data/correlation/sector_correlation_region_{region}.csv", index_col=0)
-                # get that region’s correlation values for the same top-5 features
+                #region’s correlation values for the same top-5 features
                 corr_vec = df.loc[features, most_affected_industry].abs().values
-                # compute cosine similarity (always between 0 and 1)
-                sim = np.dot(base_corr, corr_vec) / (
-                    np.linalg.norm(base_corr) * np.linalg.norm(corr_vec)
-                )
-                similarities.append((region, sim))
+                industries.append((region, corr_vec))
             except Exception as e:
                 print(f"Warning for region {region}: {e}")
-        # sort and take top 3 similar (excluding itself)
-        closest = sorted(similarities, key=lambda x: x[1], reverse=True)
-        closest = [(r, round(s, 3)) for r, s in closest if r != self.region][:3]
-        #print(f"Top 3 similar regions to {self.region} for industry {most_affected_industry}: {closest}")
-        #corr_with_show_value = self.df_corr.loc[:, self.value_being_shown.name]
-        corr_with_show_value = 0.7  # Placeholder for actual correlation value
         
-        mask_base = (self.df_data['Region'] == self.region) & (self.df_data['Year'] == 2020)
-        #print(self.df_data.loc[mask_base, self.value_being_shown_name])
-        print(f"Applying change of {change*100}% to region {self.region} for industry {most_affected_industry}")
-        self.df_data.loc[mask_base, self.value_being_shown_name] *= (1 + change) * corr_with_show_value
-        for region_id, sim_score in closest:
-            mask = (self.df_data['Region'] == region_id) & (self.df_data['Year'] == 2020)
-            print(f"Applying similarity-based change to region {region_id} with similarity score {sim_score}")
-            self.df_data.loc[mask, self.value_being_shown_name] *= (1 + change)*corr_with_show_value * (0.5 + 0.5*sim_score)
-        # Get only the target year data for updates
-        year_data = self.df_data[self.df_data['Year'] == 2020]
-        updates = dict(zip(year_data['Region'], year_data[self.value_being_shown_name]))
+        vc = self.value_corr.copy()
+        vc['Region'] = vc['Region'].astype(str)
+        vc['Sector'] = vc['Sector'].astype(str)
+        sub = vc[vc['Sector'] == str(most_affected_industry)].copy()
+        sub.index = sub['Region'].astype(str)
+        # corr_series maps region -> correlation scalar for the shown value column
+        corr_series = sub[self.value_being_shown_name].astype(float)
+        # apply per-region updates for YEAR = 2020 (or change mask to desired year)
+        year_mask = (self.df_data['Year'] == 2020)
+        year_data = self.df_data.loc[year_mask].copy()
+        regions = year_data['Region'].astype(str).values
+
+        # get correlation per region, default to 1.0 when missing
+        corr_for_regions = corr_series.reindex(regions).fillna(1.0).values
+
+        vr = self.ratio.copy()
+        vr['Region'] = vr['Region'].astype(str)
+        vr.set_index('Region', inplace=True)
+        
+        multipliers = np.zeros(len(regions))
+
+        for idx, region in enumerate(regions):
+            region_total = 0
+            for industry in features:
+                # Get correlation
+                corr = self.df_corr.loc[industry, most_affected_industry]
+                
+                # Get this industry's share in this region
+                ratio_col = f"{industry}_to_GDP_ratio_mean"
+                industry_ratio = vr.loc[str(region), ratio_col] if ratio_col in vr.columns and str(region) in vr.index else 0
+                
+                # Add contribution
+                region_total += change * corr * industry_ratio
+            
+            multipliers[idx] = region_total
+                
+        original_vals = year_data[self.value_being_shown_name].astype(float).values
+        new_vals = original_vals * (1 + multipliers)
+
+        print("\n=== UPDATE SUMMARY ===")
+        print(f"Most Affected Industry: {most_affected_industry}")
+        print(f"Change: {change*100:.2f}%")
+        print(f"\nRegional {self.value_being_shown_name} Changes:")
+        for idx, region in enumerate(regions):
+            print(f"  Region {region}: {original_vals[idx]:.2f} -> {new_vals[idx]:.2f} (Change: {multipliers[idx]*100:.2f}%)")
+        print("=" * 50 + "\n")
+        # assign updated values back into df_data
+        self.df_data.loc[year_mask, self.value_being_shown_name] = new_vals
+
+        # prepare updates dict for map rendering
+        year_data_updated = self.df_data[self.df_data['Year'] == 2020]
+        updates = dict(zip(year_data_updated['Region'].astype(str), year_data_updated[self.value_being_shown_name]))
         
         #somehow store updated data
-        
         display_map = DisplayedMap()
         display_map.create_time_map_with_updates(value_col=self.value_being_shown_name, updates=updates, update_year = 2020,output_path = "visualizations/updated_map.html")
