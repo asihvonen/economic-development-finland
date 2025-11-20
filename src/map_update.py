@@ -30,12 +30,13 @@ class map_script:
                 industries.append((region, corr_vec))
             except Exception as e:
                 print(f"Warning for region {region}: {e}")
-        
         vc = self.value_corr.copy()
         vc['Region'] = vc['Region'].astype(str)
         vc['Sector'] = vc['Sector'].astype(str)
+        print(vc['Sector'].unique())
         sub = vc[vc['Sector'] == str(most_affected_industry)].copy()
-        sub.index = sub['Region'].astype(str)
+        print(sub)
+        sub.set_index('Region', inplace=True)
         # corr_series maps region -> correlation scalar for the shown value column
         corr_series = sub[self.value_being_shown_name].astype(float)
         # apply per-region updates for YEAR = 2020 (or change mask to desired year)
@@ -45,7 +46,7 @@ class map_script:
 
         # get correlation per region, default to 1.0 when missing
         corr_for_regions = corr_series.reindex(regions).fillna(1.0).values
-
+        print(corr_for_regions)
         vr = self.ratio.copy()
         vr['Region'] = vr['Region'].astype(str)
         vr.set_index('Region', inplace=True)
@@ -54,18 +55,25 @@ class map_script:
 
         for idx, region in enumerate(regions):
             region_total = 0
-            for industry in features:
-                # Get correlation
-                corr = self.df_corr.loc[industry, most_affected_industry]
-                
-                # Get this industry's share in this region
-                ratio_col = f"{industry}_to_GDP_ratio_mean"
-                industry_ratio = vr.loc[str(region), ratio_col] if ratio_col in vr.columns and str(region) in vr.index else 0
-                
-                # Add contribution
-                region_total += change * corr * industry_ratio
+            if(self.value_being_shown_name == 'Disposable income, net (euro)'):
+                region_total = change
+            else:
+                main_industry_ratio_col = f"{most_affected_industry}_to_GDP_ratio_mean"
+                main_industry_ratio = vr.loc[str(region), main_industry_ratio_col] if main_industry_ratio_col in vr.columns and str(region) in vr.index else 0
+                print(main_industry_ratio)
+                # The change applied directly to the most affected industry
+                region_total += change * main_industry_ratio
+                for industry in features:
+                    # Get correlation
+                    corr = self.df_corr.loc[industry, most_affected_industry]
+                    
+                    # Get this industry's share in this region
+                    ratio_col = f"{industry}_to_GDP_ratio_mean"
+                    industry_ratio = vr.loc[str(region), ratio_col] if ratio_col in vr.columns and str(region) in vr.index else 0
+                    # Add contribution
+                    region_total += change * corr * industry_ratio
             
-            multipliers[idx] = region_total
+            multipliers[idx] = region_total * corr_for_regions[idx]
                 
         original_vals = year_data[self.value_being_shown_name].astype(float).values
         new_vals = original_vals * (1 + multipliers)
