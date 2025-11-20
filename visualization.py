@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 import plotly.express as px
 import matplotlib.pyplot as plt
-
+import plotly.graph_objects as go
 
 def plot_k_means_pca(economic_factors: pd.DataFrame):
     """
@@ -58,7 +58,7 @@ def plot_economic_factor(df, factor):
     fig.show()
 
 
-def plot_spider_chart(categories: list, values: list[list], labels: list):
+def matplotlib_spider_chart(categories: list, values: list[list], labels: list):
     """
     Args:
         categories is a list of the variables which are used to label each value in the spider chart
@@ -82,3 +82,38 @@ def plot_spider_chart(categories: list, values: list[list], labels: list):
     ax.legend(loc="upper right", bbox_to_anchor=(1.2, 1.1))
 
     plt.show()
+
+
+def plotly_spider_chart(categories: list, values: list[list], labels: list):
+    """
+    Args:
+        categories is a list of the variables which are used to label each value in the spider chart
+        values is a list of lists, the nested lists are the numerical values used to plot the spider chart
+        labels is the legend of the graph which shows what each plot instance is supposed to represent
+
+    BE AWARE, for each nested value you HAVE to append the first element to the end of the list 
+    or else the code won't work.
+    """
+    fig = go.Figure()
+
+    closed_categories = categories + [categories[0]]
+
+    for i in range(len(values)):
+        closed_values = values[i] + [values[i][0]]
+        fig.add_trace(go.Scatterpolar(
+            r=closed_values,
+            theta=closed_categories,
+            mode='lines+markers',
+            name=labels[i]
+        ))
+
+    fig.update_layout(
+        width=800,     
+        height=800,
+        polar=dict(
+            radialaxis=dict(visible=True)
+        ),
+        showlegend=True
+    )
+
+    fig.show()
