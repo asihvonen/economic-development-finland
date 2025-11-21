@@ -11,13 +11,48 @@ body {
 
 .container {
     display: flex;
+    flex-direction: column; /* Changed to column to accommodate the top bar */
     height: 100vh;
     width: 100vw;
 }
 
+/* TOP BAR for mode switching */
+.top-bar {
+    padding: 10px;
+    background: #e9e9e9;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    gap: 10px;
+}
+
+.top-bar button {
+    padding: 8px 15px;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.top-bar button:hover {
+    background-color: #ddd;
+}
+
+.top-bar button.active {
+    background-color: #FFA500;
+    color: white;
+    border-color: #FFA500;
+}
+
+.content-area {
+    display: flex;
+    flex-grow: 1; /* Takes the remaining height */
+}
+
 /* LEFT: Map viewer */
 .left {
-    flex: 1; /* Takes remaining space (~65%) */
+    flex: 1; /* Takes remaining space */
     display: flex;
     flex-direction: column;
     border-right: 2px solid #FFA500;
@@ -44,33 +79,79 @@ body {
     overflow: hidden; /* Prevents any iframe overflow from creating "margins" */
 }
 
-/* RIGHT: Chat panel */
+/* RIGHT: Panels container */
 .right {
+    /* Use a fixed width for chat mode and rely on display: none for stats mode */
     width: 35%;
-    display: flex;
+    display: flex; 
     flex-direction: column;
     background-color: #fff;
     box-shadow: -2px 0 5px rgba(0,0,0,0.05);
+    position: relative; 
+}
+
+.panel {
+    flex-grow: 1;
+    display: none; /* Hide panels by default */
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.panel.active-panel {
+    display: flex; /* Show the active panel */
+}
+
+/* --- CHAT PANEL STYLES --- */
+.chat-panel {
+    flex-grow: 1; 
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Ensure it fills the right container */
 }
 
 .chat-box {
-    flex-grow: 1;
+    /* History area (now flexible) */
+    flex-grow: 1; /* NEW: Allow it to grow */
+    /* max-height: 200px; -- REMOVED */
+    overflow-y: auto;
+    padding: 10px; 
+    background: #f8f8f8;
+    display: flex;
+    flex-direction: column-reverse; /* Shows latest message at the top */
+    border-bottom: 1px solid #ccc; 
+}
+
+/* Style for the full response output when a scenario is complete */
+.full-response-output {
+    flex-grow: 1; /* Takes the remaining space */
     padding: 15px;
     overflow-y: auto;
-    background: #f8f8f8;
-    display: flex;              /* NEW: Enable flexbox */
-    flex-direction: column-reverse;
+    background-color: #fff;
 }
 
-.chat-box p {
-    margin: 6px 0;
+.full-response-output p {
+    margin-bottom: 10px;
 }
+
+.full-response-output hr {
+    margin: 15px 0;
+    border: 0;
+    border-top: 1px dashed #FFA500;
+}
+
 
 .chat-input {
-    display: flex;
+    /* Input area (fixed height) */
+    flex-grow: 0; /* Ensures it only takes space needed for its content */
     padding: 10px;
     background: #fff;
-    border-top: 1px solid #ccc;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    border-top: 1px solid #eee; 
+    /* NEW: Add a fixed height constraint if you want the input area to be smaller than the chat box */
+    /* If you want more whitespace at the top, you would need to introduce an empty div with flex-grow: 1 above chat-box */
 }
 
 .chat-input input {
@@ -81,17 +162,17 @@ body {
 }
 
 .chat-input button {
-    margin-left: 10px;
     padding: 8px 12px;
     background-color: #FFA500;
     border: none;
     color: white;
     border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.2s;
 }
 
 .chat-input button:hover {
-    background-color: #0056b3;
+    background-color: #0056b3; 
 }
 
 .user {
@@ -100,4 +181,45 @@ body {
 
 .bot {
     color: #FFA500;
+}
+
+/* --- STATISTICS PANEL STYLES --- */
+.stats-panel {
+    padding: 20px;
+    overflow-y: auto;
+    background-color: #fff;
+}
+
+.stats-panel h3 {
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.stat-item {
+    margin-bottom: 10px;
+    padding: 5px;
+    border-bottom: 1px dotted #eee;
+}
+
+.stats-panel hr {
+    margin: 20px 0;
+    border: 0;
+    border-top: 1px solid #eee;
+}
+
+.stats-panel h4 {
+    margin-bottom: 10px;
+    color: #666;
+}
+
+.stats-panel ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.stats-panel ul li {
+    padding: 5px 0;
+    margin-left: 15px;
+    border-left: 2px solid #FFA500;
+    padding-left: 8px;
 }

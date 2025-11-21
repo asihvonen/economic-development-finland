@@ -2,31 +2,53 @@ from flask import Flask, render_template, request, jsonify, abort
 from pathlib import Path
 from config import hg_token
 from map_update import map_script
-from llm import LLM
+#from llm import LLM
 
 app = Flask(__name__)
 
-LIST_OF_MAPS = {
-    "disposable_income": "visualizations/disposable_income.html",
-    "GDP_per_cap": "visualizations/GDP_per_cap.html",
-    "unemployed": "visualizations/unemployed.html",
-    "RnD": "visualizations/RnD.html",
+MAP_DEFINITIONS = {
+    "disposable_income": {"path": "visualizations/disposable_income.html", "name": "Disposable income, net (euro)"},
+    "GDP_per_cap": {"path": "visualizations/GDP_per_cap.html", "name": "GDP per capita (euro)"},
+    "updated": {"path": "visualizations/updated_map.html", "name": "Updated Scenario Map (Simulated)"},
 }
+
+# The list of maps initially available in the dropdown
+INITIAL_MAP_KEYS = ["disposable_income", "GDP_per_cap"]
+
+# Global variable (or temporary store) to manage the current list of available map keys
+# NOTE: In a real app, this should be managed per-session.
+CURRENT_AVAILABLE_MAP_KEYS = INITIAL_MAP_KEYS.copy()
 
 @app.route("/")
 def index():
-    current_map = request.args.get("map", "GDP_per_cap")  # Default to disposable_income
-    return render_template("index.html", current_map=current_map)
+    global CURRENT_AVAILABLE_MAP_KEYS
+    # Check if 'updated' map should be in the list
+    if "updated" in request.args:
+        CURRENT_AVAILABLE_MAP_KEYS = INITIAL_MAP_KEYS + ["updated"]
+    else:
+        # If no "updated" flag, reset to initial maps
+        CURRENT_AVAILABLE_MAP_KEYS = INITIAL_MAP_KEYS
+        
+    current_map_key = request.args.get("map", "GDP_per_cap")
+    
+    # Check if the requested map key is valid for the current list
+    if current_map_key not in CURRENT_AVAILABLE_MAP_KEYS:
+        current_map_key = "GDP_per_cap" # Fallback
+
+    # Pass the list of available maps and their definitions to the template
+    available_maps = {key: MAP_DEFINITIONS[key] for key in CURRENT_AVAILABLE_MAP_KEYS}
+
+    return render_template("index.html", current_map_key=current_map_key, available_maps=available_maps)
 
 @app.route("/map")
 def get_map():
     map_type = request.args.get("type")
-    if map_type not in LIST_OF_MAPS:
-        abort(404, description="Map not found")  # Returns 404 if invalid type
-    map_path = LIST_OF_MAPS[map_type]
+    if map_type not in MAP_DEFINITIONS:
+        abort(404, description="Map not found")
+    map_path = MAP_DEFINITIONS[map_type]["path"]
     try:
         html_content = Path(map_path).read_text(encoding="utf-8")
-        return html_content  # Return raw HTML for iframe
+        return html_content
     except FileNotFoundError:
         abort(404, description="Map file not found")
 
@@ -36,9 +58,9 @@ def chat():
     user_message = data.get("message", "")
     current_map_key = data.get("current_map", "GDP per capita (euro)")
     try:
-        llm = LLM()
-        response = llm.analyze_scenario(scenario = user_message, region_specific=False) # needs to be of form list[industry, change]
-        
+        #llm = LLM()
+        #response = llm.analyze_scenario(scenario = user_message, region_specific=False) # needs to be of form list[industry, change]           
+        response = ["Gross value added (millions of euro), G Wholesale and retail trade; repair of motor vehicles and motorcycles", "35%"]
         # Create new map using map_script
         industry, change = response
         change_value = float(change.strip('%')) / 100  # Convert percentage to decimal
@@ -49,13 +71,14 @@ def chat():
         # Update the map
         map_handler.update_map(industry, change_value)
         # Add the new map to available maps
-        LIST_OF_MAPS["updated"] = "visualizations/updated_map.html"
+        map_type = "updated"
     except Exception as e:
         response = f"Error: {e}"
+        map_type = None
 
     return jsonify({
         "response": response,
-        "map_type": "updated"
+        "map_type": map_type
         })
 
 if __name__ == "__main__":

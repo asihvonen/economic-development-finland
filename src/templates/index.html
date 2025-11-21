@@ -2,57 +2,290 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Interactive Map & Chat</title>
+    <title>Interactive Map & Data</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
 <div class="container">
 
-    <!-- LEFT SIDE: MAP -->
-    <div class="left">
-        <div class="map-header">
-            <select id="map-select">
-                <option value="disposable_income" {% if current_map=='disposable_income' %}selected{% endif %}>Disposable income, net (euro)</option>
-                <option value="GDP_per_cap" {% if current_map=='GDP_per_cap' %}selected{% endif %}>GDP per capita (euro)</option>
-                <option value="unemployed" {% if current_map=='unemployed' %}selected{% endif %}>Unemployed (Population)</option>
-                <option value="RnD" {% if current_map=='RnD' %}selected{% endif %}>R&D</option>
-            </select>
-        </div>
-
-        <div class="map-container">
-            <iframe id="map-iframe" src="/map?type={{ current_map }}" style="width: 100%; height: 100%; border: none;"></iframe>
-        </div>
+    <div class="top-bar">
+        <button id="mode-chat" onclick="setMode('chat')" class="active">Map + Chat (Simulated Timeslider)</button>
+        <button id="mode-stats" onclick="setMode('stats')">Map + Statistics (No Timeslider)</button>
     </div>
 
-    <!-- RIGHT SIDE: CHAT -->
-    <div class="right">
-        <div id="chat-box" class="chat-box"></div>
-        <div class="chat-input">
-            <input id="user-input" type="text" placeholder="Type your message..." onkeydown="if(event.key==='Enter'){sendMessage()}">
-            <button onclick="sendMessage()">Send</button>
+    <div class="content-area">
+        <div class="left">
+            <div class="map-header">
+                <select id="map-select">
+                    {% for key, map_data in available_maps.items() %}
+                        <option value="{{ key }}" {% if current_map_key==key %}selected{% endif %}>{{ map_data.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="map-container">
+                <iframe id="map-iframe" src="/map?type={{ current_map_key }}" style="width: 100%; height: 100%; border: none;"></iframe>
+            </div>
+        </div>
+
+        <div class="right">
+            
+            <div id="chat-panel" class="panel chat-panel active-panel">
+                <div id="chat-box" class="chat-box">
+                    <p class="bot intro-message">
+                        You can ask **one question** per map selection to simulate a scenario.
+                        For example: "What if the hospitality sector grows by 20%?"
+                    </p>
+                </div>
+                <div class="chat-input" id="chat-input-controls">
+                    <input id="user-input" type="text" placeholder="Type your scenario..." onkeydown="if(event.key==='Enter'){sendMessage()}">
+                    <button id="send-button" onclick="sendMessage()">Simulate</button>
+                </div>
+                <div id="full-response-output" class="full-response-output" style="display: none;"></div>
+            </div>
+
+            <div id="stats-panel" class="panel stats-panel">
+                <h3>Statistics for Current Map</h3>
+                <div class="stat-item">
+                    <p><strong>Map Type:</strong> <span id="stat-map-type">GDP per capita (euro)</span></p>
+                </div>
+                <div class="stat-item">
+                    <p><strong>Maximum Value:</strong> <span id="stat-max-value">Loading...</span></p>
+                </div>
+                <div class="stat-item">
+                    <p><strong>Minimum Value:</strong> <span id="stat-min-value">Loading...</span></p>
+                </div>
+                <div class="stat-item">
+                    <p><strong>Average Value:</strong> <span id="stat-avg-value">Loading...</span></p>
+                </div>
+                <hr>
+                <h4>Top 5 Regions:</h4>
+                <ul id="top-regions">
+                    <li>(Awaits Data)</li>
+                </ul>
+            </div>
         </div>
     </div>
 </div>
 
 <script>
+    let currentMode = 'chat';
+    const mapSelect = document.getElementById('map-select');
+    const updatedMapKey = 'updated';
+    // Ensure currentMapKey is retrieved correctly from the template
+    const currentMapKey = '{{ current_map_key }}'; 
+    
+    // Elements for control
+    const userInput = document.getElementById('user-input');
+    const sendButton = document.getElementById('send-button');
+    const chatBox = document.getElementById('chat-box');
+    const chatInputControls = document.getElementById('chat-input-controls'); // NEW
+    const fullResponseOutput = document.getElementById('full-response-output'); // NEW
+    
+    // Key for Session Storage
+    const CHAT_RESPONSE_KEY = 'pendingChatResponse';
+
+    // State flag to enforce one question and disallow chat on updated map
+    let isChatAvailable = true;
+
+    // --- NEW: Function to load and display pending chat response ---
+    function loadPendingResponse() {
+        const storedData = sessionStorage.getItem(CHAT_RESPONSE_KEY);
+        
+        if (storedData) {
+            const data = JSON.parse(storedData);
+            
+            // Clear the intro message
+            chatBox.innerHTML = '';
+            
+            // Display User Message in chat-box (history)
+            chatBox.insertAdjacentHTML('afterbegin', `<p class="user"><b>You:</b> ${data.userMessage}</p>`);
+
+            // If it's the updated map, move the full bot response to the main output area
+            if (currentMapKey === updatedMapKey) {
+                // Hide the smaller chat box and input controls
+                chatBox.style.display = 'none';
+                chatInputControls.style.display = 'none';
+                
+                // Show the full response output area and populate it
+                fullResponseOutput.style.display = 'block';
+                fullResponseOutput.innerHTML = `
+                    <p class="bot intro-message">
+                        Map reflects the updated simulation.
+                    </p>
+                    <hr>
+                    <p class="bot"><b>LLM Analysis:</b> ${data.botResponse}</p>
+                `;
+            } else {
+                 // Prepend bot response to chat-box (history) if not on updated map
+                 chatBox.insertAdjacentHTML('afterbegin', `<p class="bot"><b>Bot:</b> Simulation Complete.</p>`);
+            }
+            
+            // Clear storage so it doesn't reappear on subsequent reloads
+            sessionStorage.removeItem(CHAT_RESPONSE_KEY);
+            
+            // Scroll to bottom
+            chatBox.scrollTop = 0;
+        } else {
+             // If no pending data, and it's an updated map, display a status message
+             if (currentMapKey === updatedMapKey) {
+                 // Clear the chat box contents
+                 chatBox.innerHTML = '';
+                 // Hide chat input and show the full response area with a status message
+                 chatBox.style.display = 'none';
+                 chatInputControls.style.display = 'none';
+                 fullResponseOutput.style.display = 'block';
+                 fullResponseOutput.innerHTML = `<p class="bot intro-message">
+                    Map reflects the updated simulation.
+                    (No LLM output found in session history).
+                </p>`;
+             }
+        }
+    }
+
+
+    // --- Initialization Check for Updated Map ---
+    if (currentMapKey === updatedMapKey) {
+        isChatAvailable = false;
+        userInput.placeholder = "Simulation complete. Select a new map to start over.";
+    }
+
+    // Function to disable input controls
+    function disableChatInput() {
+        userInput.disabled = true;
+        sendButton.disabled = true;
+    }
+
+    // Function to enable input controls
+    function enableChatInput() {
+        userInput.disabled = false;
+        sendButton.disabled = false;
+        userInput.placeholder = "Type your scenario...";
+    }
+    
+    // Apply initial state based on current map key
+    if (!isChatAvailable) {
+        disableChatInput();
+    } else {
+        // Only show intro message if chat is available and not showing a previous full response
+        if (!sessionStorage.getItem(CHAT_RESPONSE_KEY) && currentMapKey !== updatedMapKey) {
+             chatBox.innerHTML = `<p class="bot intro-message">
+                Describe your scenario.
+                Example: "What if the hospitality sector grows by 20%?"
+            </p>`;
+        }
+    }
+    
+    // --- NEW: setMode function for switching between chat and stats mode ---
+    function setMode(mode) {
+        currentMode = mode;
+        
+        // Update button visual state
+        document.getElementById('mode-chat').classList.remove('active');
+        document.getElementById('mode-stats').classList.remove('active');
+        document.getElementById(`mode-${mode}`).classList.add('active');
+
+        // Update panel visibility
+        const chatPanel = document.getElementById('chat-panel');
+        const statsPanel = document.getElementById('stats-panel');
+        const rightPanel = document.querySelector('.right'); // Get the right container
+        const leftPanel = document.querySelector('.left'); // Get the left container
+        
+        if (mode === 'chat') {
+            chatPanel.classList.add('active-panel');
+            statsPanel.classList.remove('active-panel');
+            rightPanel.style.display = 'flex'; // Show right panel
+            rightPanel.style.width = '35%'; // Restore width
+            leftPanel.style.flex = '1'; // Restore left panel flex
+        } else {
+            chatPanel.classList.remove('active-panel');
+            statsPanel.classList.add('active-panel');
+            rightPanel.style.display = 'none'; // Hide right panel
+            leftPanel.style.flex = '1'; // Left panel takes all remaining space
+            // Trigger statistics update
+            updateStatisticsDisplay(); 
+        }
+        
+        // If the current map is the updated one, switch back to a base map in stats mode
+        if (mode === 'stats' && currentMapKey === updatedMapKey) {
+            alert('The Updated Scenario Map is only available in Chat Mode for dynamic analysis.\nSwitching to GDP per capita.');
+            window.location.href = `/?map=GDP_per_cap`;
+            // Note: the window.location.href will handle the actual switch
+        }
+    }
+
+    // --- Placeholder function for statistics update (remains the same) ---
+    function updateStatisticsDisplay() {
+        // This is a placeholder as statistics data is not available in the current files
+        const mapName = mapSelect.options[mapSelect.selectedIndex].text;
+        document.getElementById('stat-map-type').textContent = mapName;
+        document.getElementById('stat-max-value').textContent = 'N/A (Simulated)';
+        document.getElementById('stat-min-value').textContent = 'N/A (Simulated)';
+        document.getElementById('stat-avg-value').textContent = 'N/A (Simulated)';
+        document.getElementById('top-regions').innerHTML = `
+            <li>Region A: N/A</li>
+            <li>Region B: N/A</li>
+            <li>Region C: N/A</li>
+            <li>Region D: N/A</li>
+            <li>Region E: N/A</li>
+        `;
+    }
+
+
     // Update iframe src when map type changes (no page reload)
     document.getElementById('map-select').addEventListener('change', function() {
         const mapType = this.value;
+        
+        // Block switching to 'updated' map if in stats mode (double check)
+        if (currentMode === 'stats' && mapType === updatedMapKey) {
+            alert('The Updated Scenario Map is only available in Chat Mode');
+            // Revert selection
+            this.value = currentMapKey || 'GDP_per_cap'; 
+            return;
+        }
+        
+        // If the map changes, reload the entire page without the 'updated=true' flag
+        if (mapType !== currentMapKey) {
+             // If switching away from an updated map, clear any pending messages too
+             sessionStorage.removeItem(CHAT_RESPONSE_KEY); 
+             // Also clear the 'updated' flag from the URL
+             window.location.href = `/?map=${mapType}`;
+             return;
+        }
+
         document.getElementById('map-iframe').src = `/map?type=${mapType}`;
+        if (currentMode === 'stats') {
+             updateStatisticsDisplay(); // Update stats when map changes
+        }
     });
+
     function getCurrentMapName() {
         const select = document.getElementById('map-select');
         return select.options[select.selectedIndex].text;
     }
-    async function sendMessage() {
-        const input = document.getElementById("user-input");
-        const chatBox = document.getElementById("chat-box");
-        const message = input.value.trim();
-        if (!message) return;
 
-        // Prepend user message
+    async function sendMessage() {
+        const message = userInput.value.trim();
+        if (!message) return;
+        
+        if (!isChatAvailable) {
+            alert('Simulation already executed. Please select a different base map to run a new scenario.');
+            return;
+        }
+        
+        if (currentMode !== 'chat') {
+            alert('Please switch to "Map + Chat" mode to run scenario simulations.');
+            return;
+        }
+        
+        // Disable input immediately after sending, before API call
+        disableChatInput(); 
+
+        // Update chat box immediately with user message and status
+        chatBox.innerHTML = ''; // Clear existing
         chatBox.insertAdjacentHTML('afterbegin', `<p class="user"><b>You:</b> ${message}</p>`);
-        input.value = "";
+        chatBox.insertAdjacentHTML('afterbegin', `<p class="bot"><b>Bot:</b> Running simulation...</p>`);
+
 
         try {
             // Fetch model response
@@ -61,28 +294,51 @@
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ message: message, current_map: getCurrentMapName() }),  // Fixed: was 'userInput'
+                body: JSON.stringify({ message: message, current_map: getCurrentMapName() }), 
             });
 
             const data = await res.json();
             
-            // Prepend bot response
-            chatBox.insertAdjacentHTML('afterbegin', `<p class="bot"><b>Bot:</b> ${data.response}</p>`);
-            
-            // Update map if new map type provided
+            // --- NEW: Save the response and redirect. DO NOT display the response here. ---
             if (data.map_type) {
-                document.getElementById('map-iframe').src = `/map?type=${data.map_type}`;
-                document.getElementById('map-select').value = data.map_type;
+                // Prepare data to store
+                const responseData = {
+                    userMessage: message,
+                    botResponse: Array.isArray(data.response) ? data.response.join(' will change by ') : data.response // Format LLM response
+                };
+                
+                // Save the data to session storage
+                sessionStorage.setItem(CHAT_RESPONSE_KEY, JSON.stringify(responseData));
+
+                // Force a full reload with the updated flag
+                window.location.href = `/?map=${data.map_type}&updated=true`;
+                return;
             }
             
-            // Ensure scrolled to bottom
-            chatBox.scrollTop = 0;
+            // Fallback for failed map update (still display error immediately if no redirect)
+            chatBox.innerHTML = '';
+            chatBox.insertAdjacentHTML('afterbegin', `<p class="user"><b>You:</b> ${message}</p>`);
+            chatBox.insertAdjacentHTML('afterbegin', `<p class="bot"><b>Bot:</b> Map update failed, but simulation ran: ${data.response}</p>`);
+            isChatAvailable = false;
             
         } catch (error) {
             console.error('Error:', error);
+            chatBox.innerHTML = '';
+            chatBox.insertAdjacentHTML('afterbegin', `<p class="user"><b>You:</b> ${message}</p>`);
             chatBox.insertAdjacentHTML('afterbegin', `<p class="bot"><b>Error:</b> ${error.message}</p>`);
+            isChatAvailable = false;
+        }
+        // Ensure input is re-enabled if no redirect happened (error case)
+        if (!isChatAvailable) {
+            disableChatInput();
         }
     }
+    
+    // --- NEW: Call the loader on page load ---
+    loadPendingResponse();
+
+    // Set initial mode on load
+    setMode('chat'); 
 </script>
 </body>
 </html>
