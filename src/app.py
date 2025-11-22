@@ -7,8 +7,8 @@ from map_update import map_script
 app = Flask(__name__)
 
 MAP_DEFINITIONS = {
-    "disposable_income": {"path": "visualizations/disposable_income.html", "name": "Disposable income, net (euro)"},
-    "GDP_per_cap": {"path": "visualizations/GDP_per_cap.html", "name": "GDP per capita (euro)"},
+    "disposable_income": {"path": "visualizations/disposable_income.html", "name": "Disposable income, net"},
+    "GDP_per_cap": {"path": "visualizations/GDP_per_cap.html", "name": "GDP per capita (euro at current prices)"},
     "updated": {"path": "visualizations/updated_map.html", "name": "Updated Scenario Map (Simulated)"},
 }
 
@@ -56,11 +56,11 @@ def get_map():
 def chat():
     data = request.get_json()
     user_message = data.get("message", "")
-    current_map_key = data.get("current_map", "GDP per capita (euro)")
+    current_map_key = data.get("current_map", "GDP per capita (euro at current prices)")
     try:
         #llm = LLM()
         #response = llm.analyze_scenario(scenario = user_message, region_specific=False) # needs to be of form list[industry, change]           
-        response = ["Gross value added (millions of euro), G Wholesale and retail trade; repair of motor vehicles and motorcycles", "35%"]
+        response = ["Gross value added (millions of euro), G Wholesale and retail trade; repair of motor vehicles and motorcycles (45-47)", "35%"]
         # Create new map using map_script
         industry, change = response
         change_value = float(change.strip('%')) / 100  # Convert percentage to decimal

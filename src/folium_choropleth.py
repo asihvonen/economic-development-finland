@@ -5,7 +5,7 @@ import geopandas as gpd
 from folium.plugins import TimeSliderChoropleth
 
 class DisplayedMap:
-    def __init__(self, geojson_path='data/finland_regions.json', data_path='data/regional_economic_data.csv'):
+    def __init__(self, geojson_path='data/finland_regions.json', data_path='data/final_economic_data.csv'):
         # Load region geometries
         self.regions = gpd.read_file(geojson_path)
         self.regions['id'] = self.regions['id'].str.replace('FI', '', regex=False)
@@ -13,6 +13,7 @@ class DisplayedMap:
 
         # Load base data
         self.data = pd.read_csv(data_path, index_col=False)
+        self.data = self.data[(self.data["Region"] != 3) & (self.data["Region"] != 20)] 
         self.data['Region'] = self.data['Region'].astype(str).apply(lambda x: f"{int(x):02d}")
 
     def create_time_map_with_updates(self, value_col: str, updates: dict, update_year: int = 2022, output_path: str = "../visualizations/updated_map.html"):

@@ -10,32 +10,37 @@ from folium.plugins import TimeSliderChoropleth
 from folium_choropleth import DisplayedMap
 class map_script:
     def __init__(self,region_id,value_being_shown):
-        self.df_data = pd.read_csv('data/regional_economic_data.csv', index_col=False)
+        self.df_data = pd.read_csv('data/final_economic_data.csv', index_col=False)
+        self.df_data = self.df_data[(self.df_data["Region"] != 3) & (self.df_data["Region"] != 20)] 
         self.region = int(region_id)
-        self.df_corr = pd.read_csv(f"data/correlation/sector_correlation_region_{self.region}.csv", index_col=0)
+        #self.df_corr = pd.read_csv(f"data/correlation/sector_correlation_region_{self.region}.csv", index_col=0)
         self.all_regions = self.df_data['Region'].unique().tolist()
         self.value_being_shown_name = value_being_shown
         self.value_corr = pd.read_csv("data/correlation/income_gdp_correlation_all_regions.csv")
         self.ratio = pd.read_csv("data/region_gva_ratio_stats.csv")
     def update_map(self,most_affected_industry,change):
-        # find top 5 correlated industries  
-        features = self.df_corr[most_affected_industry].abs().sort_values(ascending=False).head(5).index.tolist()[1:]     
-        base_corr = self.df_corr.loc[features, most_affected_industry].abs().values
-        industries = []
+        # find top 5 correlated industries     
+        #base_corr = self.df_corr.loc[features, most_affected_industry].abs().values
+        region_features = []
         for region in self.all_regions:
             try:
+                print(1)
                 df = pd.read_csv(f"data/correlation/sector_correlation_region_{region}.csv", index_col=0)
                 #region’s correlation values for the same top-5 features
+                print(2)
+                features = df[most_affected_industry].abs().sort_values(ascending=False).head(6).index.tolist()[1:]
+                print(features)  
                 corr_vec = df.loc[features, most_affected_industry].abs().values
-                industries.append((region, corr_vec))
+                print(corr_vec)
+                region_features.append((region, (features,corr_vec)))
             except Exception as e:
                 print(f"Warning for region {region}: {e}")
         vc = self.value_corr.copy()
         vc['Region'] = vc['Region'].astype(str)
         vc['Sector'] = vc['Sector'].astype(str)
-        print(vc['Sector'].unique())
+        #print(vc['Sector'].unique())
         sub = vc[vc['Sector'] == str(most_affected_industry)].copy()
-        print(sub)
+        #print(sub)
         sub.set_index('Region', inplace=True)
         # corr_series maps region -> correlation scalar for the shown value column
         corr_series = sub[self.value_being_shown_name].astype(float)
@@ -53,9 +58,9 @@ class map_script:
         
         multipliers = np.zeros(len(regions))
 
-        for idx, region in enumerate(regions):
+        for idx, (region ,(features,corr_vec)) in enumerate(region_features):
             region_total = 0
-            if(self.value_being_shown_name == 'Disposable income, net (euro)'):
+            if(self.value_being_shown_name == 'Disposable income, net'):
                 region_total = change
             else:
                 main_industry_ratio_col = f"{most_affected_industry}_to_GDP_ratio_mean"
@@ -63,9 +68,9 @@ class map_script:
                 print(main_industry_ratio)
                 # The change applied directly to the most affected industry
                 region_total += change * main_industry_ratio
-                for industry in features:
+                for i, industry in enumerate(features):
                     # Get correlation
-                    corr = self.df_corr.loc[industry, most_affected_industry]
+                    corr = corr_vec[i]
                     
                     # Get this industry's share in this region
                     ratio_col = f"{industry}_to_GDP_ratio_mean"
