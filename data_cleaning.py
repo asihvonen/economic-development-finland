@@ -25,7 +25,8 @@ def pad_code(df: pd.DataFrame, col: str, code_length: int) -> pd.DataFrame:
     Pad a column of a dataframe with zeros to code_length.
     For example, "1" becomes "01" with code_length=2.
     """
-    return df[col].astype(str).str.zfill(code_length)
+    df[col] = df[col].astype(str).str.zfill(code_length)
+    return df
 
 
 def split_code_from_name(df: pd.DataFrame, col: str, code_length: int) -> pd.DataFrame:
