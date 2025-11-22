@@ -56,9 +56,13 @@ class DisplayedMap:
         values = df[value_col].dropna()
         #print(values)
         #print(f"Min: {values.min()}, Max: {values.max()}")
-        max_col = max(values)
-        min_col = min(values)
-        cmap = cm.linear.YlOrRd_09.scale(min_col, max_col)
+        cmap = cm.LinearColormap(
+            vmin=df[value_col].quantile(0.0),
+            vmax=df[value_col].quantile(1),
+            colors=["red", "orange"],
+            caption=value_col,
+        )
+        
         df['color'] = values.map(cmap)
         # Build the style dict required by TimeSliderChoropleth
         style_dict = {}
@@ -88,13 +92,24 @@ class DisplayedMap:
         region_gdf = region_gdf.drop_duplicates().reset_index()
         
         # Create map
-        layer = folium.Map(min_zoom=4, max_bounds=True, tiles='cartodbpositron')
+        layer = folium.Map(location=[64, 28], zoom_start=4, tiles='cartodbpositron')
         TimeSliderChoropleth(
             data=region_gdf.to_json(),
             styledict=style_dict,
         ).add_to(layer)
         cmap.caption = value_col
         cmap.add_to(layer)
+
+        folium.GeoJson(
+            self.regions,  
+            style_function=lambda x: {
+                'fillColor': 'transparent',
+                'color': 'black',  # Border color
+                'weight': 2,  # Border width
+                'fillOpacity': 0
+            },
+            name='Region Borders'
+        ).add_to(layer)
 
         if output_path:
             
