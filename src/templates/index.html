@@ -18,7 +18,17 @@
             <div class="map-header">
                 <select id="map-select">
                     {% for key, map_data in available_maps.items() %}
-                        <option value="{{ key }}" {% if current_map_key==key %}selected{% endif %}>{{ map_data.name }}</option>
+                        {% set mode_type = 'both' %}
+                        {% if key in ['business_vitality_index', 'demographic_sustainability_index', 'economic_prosperity_index', 'no_slider'] %}
+                            {% set mode_type = 'stats' %}
+                        {% elif key == 'updated' %}
+                            {% set mode_type = 'chat' %}
+                        {% endif %}
+                        <option value="{{ key }}" 
+                                data-mode="{{ mode_type }}"
+                                {% if current_map_key==key %}selected{% endif %}>
+                            {{ map_data.name }}
+                        </option>
                     {% endfor %}
                 </select>
             </div>
@@ -71,16 +81,17 @@
 <script>
     let currentMode = 'chat';
     const mapSelect = document.getElementById('map-select');
+    const mapIframe = document.getElementById('map-iframe'); // NEW: Reference to the iframe
     const updatedMapKey = 'updated';
     // Ensure currentMapKey is retrieved correctly from the template
-    const currentMapKey = '{{ current_map_key }}'; 
+    let currentMapKey = '{{ current_map_key }}'; // Changed to 'let' as we might update the internal state
     
     // Elements for control
     const userInput = document.getElementById('user-input');
     const sendButton = document.getElementById('send-button');
     const chatBox = document.getElementById('chat-box');
-    const chatInputControls = document.getElementById('chat-input-controls'); // NEW
-    const fullResponseOutput = document.getElementById('full-response-output'); // NEW
+    const chatInputControls = document.getElementById('chat-input-controls'); 
+    const fullResponseOutput = document.getElementById('full-response-output'); 
     
     // Key for Session Storage
     const CHAT_RESPONSE_KEY = 'pendingChatResponse';
@@ -197,13 +208,51 @@
             rightPanel.style.display = 'flex'; // Show right panel
             rightPanel.style.width = '35%'; // Restore width
             leftPanel.style.flex = '1'; // Restore left panel flex
+            
+            // Re-check chat availability state
+            if (!isChatAvailable) {
+                disableChatInput();
+            } else {
+                enableChatInput();
+            }
+            
         } else {
             chatPanel.classList.remove('active-panel');
             statsPanel.classList.add('active-panel');
             rightPanel.style.display = 'none'; // Hide right panel
-            leftPanel.style.flex = '1'; // Left panel takes all remaining space
+            leftPanel.style.flex = '1 0 100%'; // Left panel takes all space when right is hidden
             // Trigger statistics update
             updateStatisticsDisplay(); 
+        }
+
+        // --- Filter map options based on mode ---
+        let firstAvailableMap = null;
+        let mapFound = false;
+        
+        Array.from(mapSelect.options).forEach(option => {
+            const modeType = option.getAttribute('data-mode');
+            const shouldBeVisible = (mode === 'chat' && (modeType === 'chat' || modeType === 'both')) || 
+                                    (mode === 'stats' && (modeType === 'stats' || modeType === 'both'));
+
+            option.style.display = shouldBeVisible ? 'block' : 'none';
+
+            if (shouldBeVisible && !firstAvailableMap) {
+                firstAvailableMap = option.value;
+            }
+            
+            if (shouldBeVisible && option.selected) {
+                mapFound = true;
+            }
+        });
+
+        // If the current map is not available in the new mode, switch to the first available map
+        if (!mapFound && firstAvailableMap) {
+            // Check if the current map is one of the index maps being hidden in chat mode
+            // or the updated map being hidden in stats mode.
+            if (mapSelect.value !== firstAvailableMap) {
+                 window.location.href = `/?map=${firstAvailableMap}&mode=${mode}`; // Pass mode to URL for persistence if possible
+                 return; // Prevent further script execution as page will reload
+            }
         }
         
         // If the current map is the updated one, switch back to a base map in stats mode
@@ -232,30 +281,37 @@
     }
 
 
-    // Update iframe src when map type changes (no page reload)
+    // --- MODIFIED MAP-SELECT LISTENER ---
     document.getElementById('map-select').addEventListener('change', function() {
-        const mapType = this.value;
+        const newMapType = this.value;
+        const oldMapType = currentMapKey;
         
-        // Block switching to 'updated' map if in stats mode (double check)
-        if (currentMode === 'stats' && mapType === updatedMapKey) {
+        // 1. Block switching to 'updated' map if in stats mode (double check)
+        if (currentMode === 'stats' && newMapType === updatedMapKey) {
             alert('The Updated Scenario Map is only available in Chat Mode');
             // Revert selection
-            this.value = currentMapKey || 'GDP_per_cap'; 
+            this.value = oldMapType || 'GDP_per_cap'; 
             return;
         }
-        
-        // If the map changes, reload the entire page without the 'updated=true' flag
-        if (mapType !== currentMapKey) {
-             // If switching away from an updated map, clear any pending messages too
+
+        // 2. Decide if a full page reload is necessary
+        const needsReload = (oldMapType === updatedMapKey); // Reload only if switching away from the 'updated' map to reset chat state
+
+        if (needsReload) {
+             // If switching away from an updated map, clear pending messages and reload
              sessionStorage.removeItem(CHAT_RESPONSE_KEY); 
              // Also clear the 'updated' flag from the URL
-             window.location.href = `/?map=${mapType}`;
+             window.location.href = `/?map=${newMapType}`;
              return;
         }
-
-        document.getElementById('map-iframe').src = `/map?type=${mapType}`;
+        
+        // 3. If no reload is needed, update the iframe and local state
+        mapIframe.src = `/map?type=${newMapType}`;
+        currentMapKey = newMapType; // Update the internal state variable
+        
+        // If in stats mode, update the statistics panel
         if (currentMode === 'stats') {
-             updateStatisticsDisplay(); // Update stats when map changes
+             updateStatisticsDisplay(); 
         }
     });
 
