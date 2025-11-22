@@ -1,286 +1,343 @@
-Region,Sector,"Disposable income, net (euro)",GDP per capita (euro)
-1,"Gross value added (millions of euro), A Agriculture, forestry and fishing",0.3023715415019762,0.2104743083003952
-1,"Gross value added (millions of euro), B Mining and quarrying",-0.2183794466403162,-0.008893280632411
-1,"Gross value added (millions of euro), F Construction",-0.0079051383399209,0.2677865612648221
-1,"Gross value added (millions of euro), G Wholesale and retail trade; repair of motor vehicles and motorcycles",0.5899209486166008,0.4743083003952569
-1,"Gross value added (millions of euro), H Transportation and storage",-0.2776679841897233,0.3389328063241106
-1,"Gross value added (millions of euro), I Accommodation and food service activities",-0.2203557312252964,0.5454545454545454
-1,"Gross value added (millions of euro), J Information and communication",0.0019762845849802,-0.2193675889328063
-1,"Gross value added (millions of euro), K Financial and insurance activities",0.1897233201581027,0.3053359683794466
-1,"Gross value added (millions of euro), M Professional, scientific and technical activities",0.7796442687747036,0.5484189723320159
-1,"Gross value added (millions of euro), N Administrative and support service activities",0.0316205533596837,0.6096837944664032
-1,"Gross value added (millions of euro), O Public administration and defence; compulsory social security",0.208498023715415,0.4841897233201581
-1,"Gross value added (millions of euro), P Education",0.3162055335968379,-0.1037549407114624
-1,"Gross value added (millions of euro), Q Human health and social work activities",0.6511857707509882,-0.0454545454545454
-1,"Gross value added (millions of euro), R, S Other service activities",0.4832015810276679,0.6343873517786561
-1,"Gross value added (millions of euro), T Activities of households as employers; undifferentiated goods- and services-producing activities of households for own use",-0.0820158102766798,-0.317193675889328
-2,"Gross value added (millions of euro), A Agriculture, forestry and fishing",-0.2164031620553359,0.3409090909090909
-2,"Gross value added (millions of euro), B Mining and quarrying",0.2776679841897233,0.6600790513833992
-2,"Gross value added (millions of euro), F Construction",-0.0928853754940711,0.7391304347826086
-2,"Gross value added (millions of euro), G Wholesale and retail trade; repair of motor vehicles and motorcycles",0.4071146245059288,0.4160079051383399
-2,"Gross value added (millions of euro), H Transportation and storage",0.3290513833992095,0.567193675889328
-2,"Gross value added (millions of euro), I Accommodation and food service activities",0.2045454545454545,0.308300395256917
-2,"Gross value added (millions of euro), J Information and communication",-0.0602766798418972,0.7954545454545454
-2,"Gross value added (millions of euro), K Financial and insurance activities",-0.2302371541501976,0.0553359683794466
-2,"Gross value added (millions of euro), M Professional, scientific and technical activities",0.3379446640316205,0.2015810276679842
-2,"Gross value added (millions of euro), N Administrative and support service activities",0.1492094861660079,0.4871541501976285
-2,"Gross value added (millions of euro), O Public administration and defence; compulsory social security",0.3804347826086957,-0.067193675889328
-2,"Gross value added (millions of euro), P Education",0.6719367588932806,0.4081027667984189
-2,"Gross value added (millions of euro), Q Human health and social work activities",0.6600790513833992,-0.1660079051383399
-2,"Gross value added (millions of euro), R, S Other service activities",0.4081027667984189,-0.3409090909090909
-2,"Gross value added (millions of euro), T Activities of households as employers; undifferentiated goods- and services-producing activities of households for own use",-0.7361660079051383,-0.3843873517786561
-4,"Gross value added (millions of euro), A Agriculture, forestry and fishing",-0.758893280632411,-0.3596837944664031
-4,"Gross value added (millions of euro), B Mining and quarrying",0.4318181818181818,0.1442687747035573
-4,"Gross value added (millions of euro), F Construction",0.4031620553359684,0.1946640316205533
-4,"Gross value added (millions of euro), G Wholesale and retail trade; repair of motor vehicles and motorcycles",0.2233201581027667,0.3399209486166007
-4,"Gross value added (millions of euro), H Transportation and storage",0.817193675889328,0.5899209486166008
-4,"Gross value added (millions of euro), I Accommodation and food service activities",0.6511857707509882,0.325098814229249
-4,"Gross value added (millions of euro), J Information and communication",-0.3379446640316205,0.0938735177865612
-4,"Gross value added (millions of euro), K Financial and insurance activities",0.1887351778656126,0.4703557312252964
-4,"Gross value added (millions of euro), M Professional, scientific and technical activities",-0.0069169960474308,0.3102766798418972
-4,"Gross value added (millions of euro), N Administrative and support service activities",0.5760869565217391,0.300395256916996
-4,"Gross value added (millions of euro), O Public administration and defence; compulsory social security",0.4456521739130434,0.5711462450592886
-4,"Gross value added (millions of euro), P Education",0.7164031620553359,0.3438735177865613
-4,"Gross value added (millions of euro), Q Human health and social work activities",0.8982213438735178,0.5513833992094862
-4,"Gross value added (millions of euro), R, S Other service activities",0.8280632411067194,0.3824110671936759
-4,"Gross value added (millions of euro), T Activities of households as employers; undifferentiated goods- and services-producing activities of households for own use",0.1432806324110672,-0.016798418972332
-5,"Gross value added (millions of euro), A Agriculture, forestry and fishing",-0.857707509881423,-0.0859683794466403
-5,"Gross value added (millions of euro), B Mining and quarrying",0.3300395256916996,-0.2707509881422925
-5,"Gross value added (millions of euro), F Construction",0.3942687747035573,0.116600790513834
-5,"Gross value added (millions of euro), G Wholesale and retail trade; repair of motor vehicles and motorcycles",0.5800395256916996,0.3280632411067193
-5,"Gross value added (millions of euro), H Transportation and storage",0.8557312252964426,0.1511857707509881
-5,"Gross value added (millions of euro), I Accommodation and food service activities",0.7559288537549407,-0.0019762845849802
-5,"Gross value added (millions of euro), J Information and communication",0.3883399209486166,0.5335968379446641
-5,"Gross value added (millions of euro), K Financial and insurance activities",0.2638339920948616,0.2015810276679842
-5,"Gross value added (millions of euro), M Professional, scientific and technical activities",0.2559288537549407,-0.0217391304347826
-5,"Gross value added (millions of euro), N Administrative and support service activities",-0.4347826086956521,0.2183794466403162
-5,"Gross value added (millions of euro), O Public administration and defence; compulsory social security",0.2737154150197628,0.5889328063241107
-5,"Gross value added (millions of euro), P Education",0.7974308300395256,0.1274703557312253
-5,"Gross value added (millions of euro), Q Human health and social work activities",0.5711462450592886,0.5503952569169961
-5,"Gross value added (millions of euro), R, S Other service activities",0.5177865612648221,0.3547430830039526
-5,"Gross value added (millions of euro), T Activities of households as employers; undifferentiated goods- and services-producing activities of households for own use",0.1946640316205533,-0.0938735177865612
-6,"Gross value added (millions of euro), A Agriculture, forestry and fishing",0.6106719367588933,0.1561264822134387
-6,"Gross value added (millions of euro), B Mining and quarrying",-0.4150197628458498,-0.1205533596837944
-6,"Gross value added (millions of euro), F Construction",-0.008893280632411,0.5780632411067194
-6,"Gross value added (millions of euro), G Wholesale and retail trade; repair of motor vehicles and motorcycles",0.283596837944664,0.7164031620553359
-6,"Gross value added (millions of euro), H Transportation and storage",0.274703557312253,0.391304347826087
-6,"Gross value added (millions of euro), I Accommodation and food service activities",0.1215415019762845,0.3626482213438735
-6,"Gross value added (millions of euro), J Information and communication",-0.2519762845849802,0.3152173913043478
-6,"Gross value added (millions of euro), K Financial and insurance activities",-0.1541501976284585,0.3181818181818182
-6,"Gross value added (millions of euro), M Professional, scientific and technical activities",0.0909090909090909,0.4189723320158103
-6,"Gross value added (millions of euro), N Administrative and support service activities",0.4703557312252964,0.4861660079051383
-6,"Gross value added (millions of euro), O Public administration and defence; compulsory social security",0.5464426877470355,0.541501976284585
-6,"Gross value added (millions of euro), P Education",0.350790513833992,0.2124505928853755
-6,"Gross value added (millions of euro), Q Human health and social work activities",0.8033596837944664,0.0780632411067193
-6,"Gross value added (millions of euro), R, S Other service activities",0.5148221343873518,-0.0108695652173913
-6,"Gross value added (millions of euro), T Activities of households as employers; undifferentiated goods- and services-producing activities of households for own use",-0.1413043478260869,-0.5731225296442688
-7,"Gross value added (millions of euro), A Agriculture, forestry and fishing",0.1986166007905138,0.1650197628458498
-7,"Gross value added (millions of euro), B Mining and quarrying",-0.6610671936758893,-0.41699604743083
-7,"Gross value added (millions of euro), F Construction",0.0296442687747035,0.1432806324110672
-7,"Gross value added (millions of euro), G Wholesale and retail trade; repair of motor vehicles and motorcycles",0.6590909090909091,0.2519762845849802
-7,"Gross value added (millions of euro), H Transportation and storage",0.6472332015810277,0.6798418972332015
-7,"Gross value added (millions of euro), I Accommodation and food service activities",0.1778656126482213,0.549407114624506
-7,"Gross value added (millions of euro), J Information and communication",-0.0513833992094861,0.1521739130434782
-7,"Gross value added (millions of euro), K Financial and insurance activities",0.1175889328063241,0.2144268774703557
-7,"Gross value added (millions of euro), M Professional, scientific and technical activities",0.0553359683794466,0.4051383399209486
-7,"Gross value added (millions of euro), N Administrative and support service activities",0.5958498023715415,0.1413043478260869
-7,"Gross value added (millions of euro), O Public administration and defence; compulsory social security",0.8033596837944664,0.5948616600790514
-7,"Gross value added (millions of euro), P Education",0.7144268774703557,0.4555335968379446
-7,"Gross value added (millions of euro), Q Human health and social work activities",0.2509881422924901,0.4387351778656126
-7,"Gross value added (millions of euro), R, S Other service activities",0.8824110671936759,0.2845849802371542
-7,"Gross value added (millions of euro), T Activities of households as employers; undifferentiated goods- and services-producing activities of households for own use",0.5138339920948617,0.2875494071146245
-8,"Gross value added (millions of euro), A Agriculture, forestry and fishing",-0.6136363636363636,0.525691699604743
-8,"Gross value added (millions of euro), B Mining and quarrying",0.6590909090909091,-0.7183794466403162
-8,"Gross value added (millions of euro), F Construction",0.2924901185770751,0.0237154150197628
-8,"Gross value added (millions of euro), G Wholesale and retail trade; repair of motor vehicles and motorcycles",0.2598814229249012,0.1106719367588932
-8,"Gross value added (millions of euro), H Transportation and storage",-0.3616600790513834,0.6788537549407114
-8,"Gross value added (millions of euro), I Accommodation and food service activities",0.5029644268774703,-0.0602766798418972
-8,"Gross value added (millions of euro), J Information and communication",-0.7687747035573123,0.6620553359683794
-8,"Gross value added (millions of euro), K Financial and insurance activities",0.3448616600790514,-0.2737154150197628
-8,"Gross value added (millions of euro), M Professional, scientific and technical activities",0.3448616600790514,0.1116600790513833
-8,"Gross value added (millions of euro), N Administrative and support service activities",0.6511857707509882,-0.3843873517786561
-8,"Gross value added (millions of euro), O Public administration and defence; compulsory social security",-0.4021739130434782,0.4654150197628458
-8,"Gross value added (millions of euro), P Education",0.7697628458498024,-0.733201581027668
-8,"Gross value added (millions of euro), Q Human health and social work activities",0.6531620553359684,-0.6511857707509882
-8,"Gross value added (millions of euro), R, S Other service activities",0.7895256916996047,-0.8142292490118577
-8,"Gross value added (millions of euro), T Activities of households as employers; undifferentiated goods- and services-producing activities of households for own use",0.7094861660079052,-0.6432806324110671
-9,"Gross value added (millions of euro), A Agriculture, forestry and fishing",-0.1946640316205533,0.2786561264822134
-9,"Gross value added (millions of euro), B Mining and quarrying",0.4555335968379446,0.042490118577075
-9,"Gross value added (millions of euro), F Construction",0.7638339920948617,0.1818181818181818
-9,"Gross value added (millions of euro), G Wholesale and retail trade; repair of motor vehicles and motorcycles",0.6403162055335968,0.0474308300395256
-9,"Gross value added (millions of euro), H Transportation and storage",0.5247035573122529,0.1403162055335968
-9,"Gross value added (millions of euro), I Accommodation and food service activities",0.6432806324110671,0.2430830039525691
-9,"Gross value added (millions of euro), J Information and communication",-0.0138339920948616,0.1630434782608695
-9,"Gross value added (millions of euro), K Financial and insurance activities",-0.4347826086956521,0.3764822134387351
-9,"Gross value added (millions of euro), M Professional, scientific and technical activities",0.2845849802371542,0.5286561264822134
-9,"Gross value added (millions of euro), N Administrative and support service activities",0.708498023715415,0.0998023715415019
-9,"Gross value added (millions of euro), O Public administration and defence; compulsory social security",0.1304347826086956,0.3112648221343873
-9,"Gross value added (millions of euro), P Education",0.8735177865612648,0.2193675889328063
-9,"Gross value added (millions of euro), Q Human health and social work activities",0.3488142292490118,0.2579051383399209
-9,"Gross value added (millions of euro), R, S Other service activities",0.8507905138339921,0.1610671936758893
-9,"Gross value added (millions of euro), T Activities of households as employers; undifferentiated goods- and services-producing activities of households for own use",0.7559288537549407,0.0484189723320158
-10,"Gross value added (millions of euro), A Agriculture, forestry and fishing",0.0770750988142292,0.1739130434782608
-10,"Gross value added (millions of euro), B Mining and quarrying",-0.0721343873517786,-0.5632411067193676
-10,"Gross value added (millions of euro), F Construction",0.633399209486166,0.2648221343873518
-10,"Gross value added (millions of euro), G Wholesale and retail trade; repair of motor vehicles and motorcycles",0.5,0.6037549407114624
-10,"Gross value added (millions of euro), H Transportation and storage",0.6314229249011858,0.1976284584980237
-10,"Gross value added (millions of euro), I Accommodation and food service activities",0.5019762845849802,0.2075098814229249
-10,"Gross value added (millions of euro), J Information and communication",-0.1590909090909091,-0.217391304347826
-10,"Gross value added (millions of euro), K Financial and insurance activities",0.3853754940711462,0.1294466403162055
-10,"Gross value added (millions of euro), M Professional, scientific and technical activities",0.6986166007905138,0.3903162055335968
-10,"Gross value added (millions of euro), N Administrative and support service activities",0.5444664031620553,0.4970355731225296
-10,"Gross value added (millions of euro), O Public administration and defence; compulsory social security",0.0889328063241106,0.5523715415019763
-10,"Gross value added (millions of euro), P Education",0.7262845849802372,0.3972332015810276
-10,"Gross value added (millions of euro), Q Human health and social work activities",0.6867588932806324,0.2292490118577075
-10,"Gross value added (millions of euro), R, S Other service activities",0.8517786561264822,0.1156126482213438
-10,"Gross value added (millions of euro), T Activities of households as employers; undifferentiated goods- and services-producing activities of households for own use",0.5928853754940712,0.1492094861660079
-11,"Gross value added (millions of euro), A Agriculture, forestry and fishing",-0.308300395256917,0.4110671936758893
-11,"Gross value added (millions of euro), B Mining and quarrying",0.2361660079051383,-0.1047430830039525
-11,"Gross value added (millions of euro), F Construction",0.2391304347826087,0.549407114624506
-11,"Gross value added (millions of euro), G Wholesale and retail trade; repair of motor vehicles and motorcycles",0.6343873517786561,0.1462450592885375
-11,"Gross value added (millions of euro), H Transportation and storage",0.7292490118577075,0.050395256916996
-11,"Gross value added (millions of euro), I Accommodation and food service activities",0.6067193675889329,0.1758893280632411
-11,"Gross value added (millions of euro), J Information and communication",-0.1808300395256917,0.1798418972332015
-11,"Gross value added (millions of euro), K Financial and insurance activities",-0.508893280632411,0.2154150197628458
-11,"Gross value added (millions of euro), M Professional, scientific and technical activities",-0.3498023715415019,-0.0869565217391304
-11,"Gross value added (millions of euro), N Administrative and support service activities",0.4911067193675889,0.2964426877470356
-11,"Gross value added (millions of euro), O Public administration and defence; compulsory social security",0.7658102766798419,0.1798418972332015
-11,"Gross value added (millions of euro), P Education",0.6462450592885376,-0.0207509881422924
-11,"Gross value added (millions of euro), Q Human health and social work activities",-0.0958498023715415,0.1126482213438735
-11,"Gross value added (millions of euro), R, S Other service activities",0.6897233201581028,0.0800395256916996
-11,"Gross value added (millions of euro), T Activities of households as employers; undifferentiated goods- and services-producing activities of households for own use",0.5602766798418972,-0.4624505928853755
-12,"Gross value added (millions of euro), A Agriculture, forestry and fishing",0.4693675889328063,0.1739130434782608
-12,"Gross value added (millions of euro), B Mining and quarrying",0.3191699604743083,0.1828063241106719
-12,"Gross value added (millions of euro), F Construction",0.7015810276679841,0.2154150197628458
-12,"Gross value added (millions of euro), G Wholesale and retail trade; repair of motor vehicles and motorcycles",0.5306324110671937,0.3112648221343873
-12,"Gross value added (millions of euro), H Transportation and storage",0.5049407114624506,-0.1709486166007905
-12,"Gross value added (millions of euro), I Accommodation and food service activities",0.0484189723320158,0.300395256916996
-12,"Gross value added (millions of euro), J Information and communication",0.2075098814229249,0.1620553359683794
-12,"Gross value added (millions of euro), K Financial and insurance activities",-0.5316205533596838,0.1610671936758893
-12,"Gross value added (millions of euro), M Professional, scientific and technical activities",0.2035573122529644,0.5069169960474308
-12,"Gross value added (millions of euro), N Administrative and support service activities",0.4851778656126482,0.0543478260869565
-12,"Gross value added (millions of euro), O Public administration and defence; compulsory social security",0.2391304347826087,0.3616600790513834
-12,"Gross value added (millions of euro), P Education",0.3063241106719367,0.4021739130434782
-12,"Gross value added (millions of euro), Q Human health and social work activities",0.5148221343873518,-0.1126482213438735
-12,"Gross value added (millions of euro), R, S Other service activities",0.7233201581027668,-0.0711462450592885
-12,"Gross value added (millions of euro), T Activities of households as employers; undifferentiated goods- and services-producing activities of households for own use",0.5197628458498024,-0.2490118577075099
-13,"Gross value added (millions of euro), A Agriculture, forestry and fishing",-0.1778656126482213,0.6175889328063241
-13,"Gross value added (millions of euro), B Mining and quarrying",0.2756916996047431,-0.1551383399209486
-13,"Gross value added (millions of euro), F Construction",0.1195652173913043,0.2786561264822134
-13,"Gross value added (millions of euro), G Wholesale and retail trade; repair of motor vehicles and motorcycles",-0.0247035573122529,0.3814229249011858
-13,"Gross value added (millions of euro), H Transportation and storage",-0.1660079051383399,0.5207509881422925
-13,"Gross value added (millions of euro), I Accommodation and food service activities",0.5266798418972332,0.2055335968379446
-13,"Gross value added (millions of euro), J Information and communication",-0.2322134387351778,0.3468379446640316
-13,"Gross value added (millions of euro), K Financial and insurance activities",0.3685770750988142,0.2717391304347826
-13,"Gross value added (millions of euro), M Professional, scientific and technical activities",0.1808300395256917,0.4308300395256917
-13,"Gross value added (millions of euro), N Administrative and support service activities",0.7450592885375494,-0.0415019762845849
-13,"Gross value added (millions of euro), O Public administration and defence; compulsory social security",0.5632411067193676,-0.0602766798418972
-13,"Gross value added (millions of euro), P Education",0.1225296442687747,-0.0108695652173913
-13,"Gross value added (millions of euro), Q Human health and social work activities",0.3656126482213438,0.1630434782608695
-13,"Gross value added (millions of euro), R, S Other service activities",0.4604743083003952,-0.0464426877470355
-13,"Gross value added (millions of euro), T Activities of households as employers; undifferentiated goods- and services-producing activities of households for own use",0.283596837944664,-0.6254940711462451
-14,"Gross value added (millions of euro), A Agriculture, forestry and fishing",-0.1986166007905138,0.2233201581027667
-14,"Gross value added (millions of euro), B Mining and quarrying",0.3715415019762846,0.0889328063241106
-14,"Gross value added (millions of euro), F Construction",0.5217391304347826,0.5553359683794467
-14,"Gross value added (millions of euro), G Wholesale and retail trade; repair of motor vehicles and motorcycles",0.616600790513834,0.6284584980237155
-14,"Gross value added (millions of euro), H Transportation and storage",0.6729249011857708,0.4100790513833992
-14,"Gross value added (millions of euro), I Accommodation and food service activities",0.2964426877470356,0.2766798418972332
-14,"Gross value added (millions of euro), J Information and communication",0.5592885375494071,0.6452569169960475
-14,"Gross value added (millions of euro), K Financial and insurance activities",-0.0158102766798418,0.0711462450592885
-14,"Gross value added (millions of euro), M Professional, scientific and technical activities",-0.2618577075098814,0.1778656126482213
-14,"Gross value added (millions of euro), N Administrative and support service activities",0.4239130434782608,0.6274703557312253
-14,"Gross value added (millions of euro), O Public administration and defence; compulsory social security",0.8181818181818182,0.5968379446640316
-14,"Gross value added (millions of euro), P Education",0.7835968379446641,0.6017786561264822
-14,"Gross value added (millions of euro), Q Human health and social work activities",-0.2717391304347826,-0.1442687747035573
-14,"Gross value added (millions of euro), R, S Other service activities",0.4515810276679842,0.1857707509881423
-14,"Gross value added (millions of euro), T Activities of households as employers; undifferentiated goods- and services-producing activities of households for own use",0.3922924901185771,-0.0573122529644268
-15,"Gross value added (millions of euro), A Agriculture, forestry and fishing",0.3557312252964427,0.3013833992094861
-15,"Gross value added (millions of euro), B Mining and quarrying",-0.0019762845849802,0.0602766798418972
-15,"Gross value added (millions of euro), F Construction",-0.4575098814229249,-0.4229249011857707
-15,"Gross value added (millions of euro), G Wholesale and retail trade; repair of motor vehicles and motorcycles",0.1778656126482213,0.1709486166007905
-15,"Gross value added (millions of euro), H Transportation and storage",0.1482213438735178,0.3043478260869565
-15,"Gross value added (millions of euro), I Accommodation and food service activities",-0.591897233201581,-0.3774703557312253
-15,"Gross value added (millions of euro), J Information and communication",0.3695652173913043,0.3132411067193676
-15,"Gross value added (millions of euro), K Financial and insurance activities",0.3389328063241106,0.5375494071146245
-15,"Gross value added (millions of euro), M Professional, scientific and technical activities",-0.0197628458498023,0.1758893280632411
-15,"Gross value added (millions of euro), N Administrative and support service activities",0.5691699604743083,0.5029644268774703
-15,"Gross value added (millions of euro), O Public administration and defence; compulsory social security",0.6818181818181818,0.558300395256917
-15,"Gross value added (millions of euro), P Education",0.6442687747035574,0.6798418972332015
-15,"Gross value added (millions of euro), Q Human health and social work activities",0.849802371541502,0.6758893280632411
-15,"Gross value added (millions of euro), R, S Other service activities",0.7183794466403162,0.700592885375494
-15,"Gross value added (millions of euro), T Activities of households as employers; undifferentiated goods- and services-producing activities of households for own use",-0.1432806324110672,-0.4446640316205533
-16,"Gross value added (millions of euro), A Agriculture, forestry and fishing",0.1037549407114624,-0.0059288537549407
-16,"Gross value added (millions of euro), B Mining and quarrying",0.6037549407114624,0.6195652173913043
-16,"Gross value added (millions of euro), F Construction",0.6126482213438735,0.682806324110672
-16,"Gross value added (millions of euro), G Wholesale and retail trade; repair of motor vehicles and motorcycles",0.4100790513833992,0.2628458498023715
-16,"Gross value added (millions of euro), H Transportation and storage",0.4090909090909091,0.4970355731225296
-16,"Gross value added (millions of euro), I Accommodation and food service activities",0.7203557312252964,0.6185770750988142
-16,"Gross value added (millions of euro), J Information and communication",-0.0217391304347826,0.2608695652173913
-16,"Gross value added (millions of euro), K Financial and insurance activities",0.4150197628458498,0.5
-16,"Gross value added (millions of euro), M Professional, scientific and technical activities",0.658102766798419,0.6452569169960475
-16,"Gross value added (millions of euro), N Administrative and support service activities",0.5444664031620553,0.4980237154150198
-16,"Gross value added (millions of euro), O Public administration and defence; compulsory social security",0.2598814229249012,0.0681818181818181
-16,"Gross value added (millions of euro), P Education",0.7440711462450593,0.4841897233201581
-16,"Gross value added (millions of euro), Q Human health and social work activities",0.1630434782608695,0.2974308300395257
-16,"Gross value added (millions of euro), R, S Other service activities",0.7875494071146245,0.7134387351778656
-16,"Gross value added (millions of euro), T Activities of households as employers; undifferentiated goods- and services-producing activities of households for own use",0.642292490118577,0.5523715415019763
-17,"Gross value added (millions of euro), A Agriculture, forestry and fishing",-0.1788537549407114,0.2756916996047431
-17,"Gross value added (millions of euro), B Mining and quarrying",0.6907114624505929,-0.0681818181818181
-17,"Gross value added (millions of euro), F Construction",-0.1235177865612648,0.6788537549407114
-17,"Gross value added (millions of euro), G Wholesale and retail trade; repair of motor vehicles and motorcycles",0.2994071146245059,0.4021739130434782
-17,"Gross value added (millions of euro), H Transportation and storage",-0.0306324110671936,-0.0948616600790513
-17,"Gross value added (millions of euro), I Accommodation and food service activities",0.3349802371541502,0.3409090909090909
-17,"Gross value added (millions of euro), J Information and communication",-0.6472332015810277,0.4486166007905138
-17,"Gross value added (millions of euro), K Financial and insurance activities",-0.5049407114624506,0.1768774703557312
-17,"Gross value added (millions of euro), M Professional, scientific and technical activities",0.4693675889328063,0.0385375494071146
-17,"Gross value added (millions of euro), N Administrative and support service activities",0.3438735177865613,0.3517786561264822
-17,"Gross value added (millions of euro), O Public administration and defence; compulsory social security",0.2480237154150197,0.0770750988142292
-17,"Gross value added (millions of euro), P Education",0.3063241106719367,0.6264822134387352
-17,"Gross value added (millions of euro), Q Human health and social work activities",0.7539525691699605,-0.0928853754940711
-17,"Gross value added (millions of euro), R, S Other service activities",0.4772727272727273,-0.3547430830039526
-17,"Gross value added (millions of euro), T Activities of households as employers; undifferentiated goods- and services-producing activities of households for own use",0.3577075098814229,-0.0731225296442687
-18,"Gross value added (millions of euro), A Agriculture, forestry and fishing",-0.3547430830039526,0.7065217391304348
-18,"Gross value added (millions of euro), B Mining and quarrying",-0.133399209486166,0.4110671936758893
-18,"Gross value added (millions of euro), F Construction",0.4950592885375494,0.1907114624505929
-18,"Gross value added (millions of euro), G Wholesale and retail trade; repair of motor vehicles and motorcycles",-0.2598814229249012,0.2796442687747035
-18,"Gross value added (millions of euro), H Transportation and storage",0.7035573122529645,-0.6126482213438735
-18,"Gross value added (millions of euro), I Accommodation and food service activities",-0.1156126482213438,0.3339920948616601
-18,"Gross value added (millions of euro), J Information and communication",-0.41699604743083,0.7035573122529645
-18,"Gross value added (millions of euro), K Financial and insurance activities",-0.0899209486166007,0.2233201581027667
-18,"Gross value added (millions of euro), M Professional, scientific and technical activities",0.2677865612648221,-0.4515810276679842
-18,"Gross value added (millions of euro), N Administrative and support service activities",0.7361660079051383,-0.3932806324110672
-18,"Gross value added (millions of euro), O Public administration and defence; compulsory social security",0.0395256916996047,-0.2035573122529644
-18,"Gross value added (millions of euro), P Education",0.0968379446640316,0.4041501976284585
-18,"Gross value added (millions of euro), Q Human health and social work activities",0.5948616600790514,-0.0227272727272727
-18,"Gross value added (millions of euro), R, S Other service activities",0.7519762845849802,-0.5790513833992095
-18,"Gross value added (millions of euro), T Activities of households as employers; undifferentiated goods- and services-producing activities of households for own use",0.4387351778656126,-0.6363636363636364
-19,"Gross value added (millions of euro), A Agriculture, forestry and fishing",-0.0602766798418972,0.016798418972332
-19,"Gross value added (millions of euro), B Mining and quarrying",-0.7055335968379447,0.3764822134387351
-19,"Gross value added (millions of euro), F Construction",0.1146245059288537,0.2055335968379446
-19,"Gross value added (millions of euro), G Wholesale and retail trade; repair of motor vehicles and motorcycles",-0.3952569169960474,0.2618577075098814
-19,"Gross value added (millions of euro), H Transportation and storage",0.658102766798419,-0.0454545454545454
-19,"Gross value added (millions of euro), I Accommodation and food service activities",-0.0533596837944664,0.3932806324110672
-19,"Gross value added (millions of euro), J Information and communication",0.0662055335968379,-0.3606719367588933
-19,"Gross value added (millions of euro), K Financial and insurance activities",0.0563241106719367,0.2885375494071146
-19,"Gross value added (millions of euro), M Professional, scientific and technical activities",0.5434782608695652,0.133399209486166
-19,"Gross value added (millions of euro), N Administrative and support service activities",0.2055335968379446,0.2025691699604743
-19,"Gross value added (millions of euro), O Public administration and defence; compulsory social security",0.133399209486166,-0.3349802371541502
-19,"Gross value added (millions of euro), P Education",0.7608695652173914,-0.4051383399209486
-19,"Gross value added (millions of euro), Q Human health and social work activities",0.4812252964426877,-0.3695652173913043
-19,"Gross value added (millions of euro), R, S Other service activities",0.5098814229249012,0.1264822134387351
-19,"Gross value added (millions of euro), T Activities of households as employers; undifferentiated goods- and services-producing activities of households for own use",-0.5899209486166008,-0.0296442687747035
-21,"Gross value added (millions of euro), A Agriculture, forestry and fishing",-0.1976284584980237,-0.4426877470355731
-21,"Gross value added (millions of euro), B Mining and quarrying",0.200592885375494,-0.2124505928853755
-21,"Gross value added (millions of euro), F Construction",0.3764822134387351,0.1363636363636363
-21,"Gross value added (millions of euro), G Wholesale and retail trade; repair of motor vehicles and motorcycles",0.3241106719367589,0.6590909090909091
-21,"Gross value added (millions of euro), H Transportation and storage",0.2164031620553359,0.7835968379446641
-21,"Gross value added (millions of euro), I Accommodation and food service activities",0.3260869565217391,0.5830039525691699
-21,"Gross value added (millions of euro), J Information and communication",0.5760869565217391,0.2164031620553359
-21,"Gross value added (millions of euro), K Financial and insurance activities",-0.1966403162055336,-0.1640316205533596
-21,"Gross value added (millions of euro), M Professional, scientific and technical activities",0.2272727272727272,0.2035573122529644
-21,"Gross value added (millions of euro), N Administrative and support service activities",0.2381422924901186,0.5
-21,"Gross value added (millions of euro), O Public administration and defence; compulsory social security",0.5988142292490118,0.492094861660079
-21,"Gross value added (millions of euro), P Education",0.2203557312252964,-0.0602766798418972
-21,"Gross value added (millions of euro), Q Human health and social work activities",0.2618577075098814,0.400197628458498
-21,"Gross value added (millions of euro), R, S Other service activities",0.1660079051383399,0.0820158102766798
-21,"Gross value added (millions of euro), T Activities of households as employers; undifferentiated goods- and services-producing activities of households for own use",-0.3922924901185771,-0.5049407114624506
+Region,Sector,"Disposable income, net",GDP per capita (euro at current prices)
+01,"Gross value added (millions of euro), A Agriculture, forestry and fishing (01-03)",0.30237154150197626,0.21047430830039526
+01,"Gross value added (millions of euro), B Mining and quarrying (05-09)",-0.2183794466403162,-0.008893280632411068
+01,"Gross value added (millions of euro), C Manufacturing (10-33)",0.10474308300395258,0.4980237154150198
+01,"Gross value added (millions of euro), D, E Electricity, gas, steam and air conditioning and water supply; sewerage and waste management (35-39)",0.4505928853754941,0.5059288537549407
+01,"Gross value added (millions of euro), F Construction (41-43)",-0.007905138339920948,0.26778656126482214
+01,"Gross value added (millions of euro), G Wholesale and retail trade; repair of motor vehicles and motorcycles (45-47)",0.5899209486166008,0.4743083003952569
+01,"Gross value added (millions of euro), H Transportation and storage (49-53)",-0.2776679841897233,0.33893280632411066
+01,"Gross value added (millions of euro), I Accommodation and food service activities (55-56)",-0.22035573122529645,0.5454545454545454
+01,"Gross value added (millions of euro), J Information and communication (58-63)",0.001976284584980237,-0.21936758893280633
+01,"Gross value added (millions of euro), K Financial and insurance activities (64-66)",0.18972332015810275,0.30533596837944665
+01,"Gross value added (millions of euro), L Real estate activities",-0.21640316205533597,-0.15810276679841898
+01,"Gross value added (millions of euro), M Professional, scientific and technical activities (69-75)",0.7796442687747036,0.5484189723320159
+01,"Gross value added (millions of euro), N Administrative and support service activities (77-82)",0.03162055335968379,0.6096837944664032
+01,"Gross value added (millions of euro), O Public administration and defence; compulsory social security (84)",0.208498023715415,0.4841897233201581
+01,"Gross value added (millions of euro), P Education (85)",0.31620553359683795,-0.10375494071146245
+01,"Gross value added (millions of euro), Q Human health and social work activities (86-88)",0.6511857707509882,-0.045454545454545456
+01,"Gross value added (millions of euro), R, S Other service activities (90-96)",0.48320158102766797,0.6343873517786561
+01,"Gross value added (millions of euro), T Activities of households as employers; undifferentiated goods- and services-producing activities of households for own use(97-98)",-0.08201581027667984,-0.31719367588932806
+02,"Gross value added (millions of euro), A Agriculture, forestry and fishing (01-03)",-0.16363636363636364,0.38441558441558443
+02,"Gross value added (millions of euro), B Mining and quarrying (05-09)",0.2636363636363636,0.6922077922077922
+02,"Gross value added (millions of euro), C Manufacturing (10-33)",-0.04155844155844156,0.912987012987013
+02,"Gross value added (millions of euro), D, E Electricity, gas, steam and air conditioning and water supply; sewerage and waste management (35-39)",0.14415584415584415,0.6155844155844156
+02,"Gross value added (millions of euro), F Construction (41-43)",-0.05714285714285714,0.8415584415584415
+02,"Gross value added (millions of euro), G Wholesale and retail trade; repair of motor vehicles and motorcycles (45-47)",0.4675324675324675,0.36363636363636365
+02,"Gross value added (millions of euro), H Transportation and storage (49-53)",0.4155844155844156,0.5766233766233766
+02,"Gross value added (millions of euro), I Accommodation and food service activities (55-56)",0.17272727272727273,0.3077922077922078
+02,"Gross value added (millions of euro), J Information and communication (58-63)",-0.05844155844155844,0.8389610389610389
+02,"Gross value added (millions of euro), K Financial and insurance activities (64-66)",-0.17792207792207793,0.24155844155844156
+02,"Gross value added (millions of euro), L Real estate activities",-0.2688311688311688,0.35064935064935066
+02,"Gross value added (millions of euro), M Professional, scientific and technical activities (69-75)",0.34285714285714286,0.19220779220779222
+02,"Gross value added (millions of euro), N Administrative and support service activities (77-82)",0.08441558441558442,0.5714285714285714
+02,"Gross value added (millions of euro), O Public administration and defence; compulsory social security (84)",0.34025974025974026,-0.2649350649350649
+02,"Gross value added (millions of euro), P Education (85)",0.6727272727272727,0.2805194805194805
+02,"Gross value added (millions of euro), Q Human health and social work activities (86-88)",0.7350649350649351,-0.12597402597402596
+02,"Gross value added (millions of euro), R, S Other service activities (90-96)",0.4701298701298701,-0.41948051948051945
+02,"Gross value added (millions of euro), T Activities of households as employers; undifferentiated goods- and services-producing activities of households for own use(97-98)",-0.7740259740259741,-0.3155844155844156
+04,"Gross value added (millions of euro), A Agriculture, forestry and fishing (01-03)",-0.6974025974025974,-0.3922077922077922
+04,"Gross value added (millions of euro), B Mining and quarrying (05-09)",0.4012987012987013,0.15194805194805194
+04,"Gross value added (millions of euro), C Manufacturing (10-33)",0.35454545454545455,0.8545454545454545
+04,"Gross value added (millions of euro), D, E Electricity, gas, steam and air conditioning and water supply; sewerage and waste management (35-39)",0.23376623376623376,0.2519480519480519
+04,"Gross value added (millions of euro), F Construction (41-43)",0.4077922077922078,0.2974025974025974
+04,"Gross value added (millions of euro), G Wholesale and retail trade; repair of motor vehicles and motorcycles (45-47)",0.21168831168831168,0.43506493506493504
+04,"Gross value added (millions of euro), H Transportation and storage (49-53)",0.874025974025974,0.6181818181818182
+04,"Gross value added (millions of euro), I Accommodation and food service activities (55-56)",0.612987012987013,0.38311688311688313
+04,"Gross value added (millions of euro), J Information and communication (58-63)",-0.33636363636363636,0.07792207792207792
+04,"Gross value added (millions of euro), K Financial and insurance activities (64-66)",0.21168831168831168,0.44675324675324674
+04,"Gross value added (millions of euro), L Real estate activities",-0.36623376623376624,-0.11428571428571428
+04,"Gross value added (millions of euro), M Professional, scientific and technical activities (69-75)",0.1,0.3142857142857143
+04,"Gross value added (millions of euro), N Administrative and support service activities (77-82)",0.5727272727272728,0.37142857142857144
+04,"Gross value added (millions of euro), O Public administration and defence; compulsory social security (84)",0.42987012987012985,0.5571428571428572
+04,"Gross value added (millions of euro), P Education (85)",0.6584415584415585,0.37272727272727274
+04,"Gross value added (millions of euro), Q Human health and social work activities (86-88)",0.8428571428571429,0.5662337662337662
+04,"Gross value added (millions of euro), R, S Other service activities (90-96)",0.8415584415584415,0.3948051948051948
+04,"Gross value added (millions of euro), T Activities of households as employers; undifferentiated goods- and services-producing activities of households for own use(97-98)",0.11428571428571428,-0.02857142857142857
+05,"Gross value added (millions of euro), A Agriculture, forestry and fishing (01-03)",-0.8396386222473179,-0.09768492377188029
+05,"Gross value added (millions of euro), B Mining and quarrying (05-09)",0.38226990400903443,-0.25578769057029926
+05,"Gross value added (millions of euro), C Manufacturing (10-33)",-0.22755505364201017,0.8283455674760023
+05,"Gross value added (millions of euro), D, E Electricity, gas, steam and air conditioning and water supply; sewerage and waste management (35-39)",0.4105025409373235,0.26143421795595706
+05,"Gross value added (millions of euro), F Construction (41-43)",0.34839073969508755,0.12478825522303783
+05,"Gross value added (millions of euro), G Wholesale and retail trade; repair of motor vehicles and motorcycles (45-47)",0.5663466967814794,0.3585544889892716
+05,"Gross value added (millions of euro), H Transportation and storage (49-53)",0.8520609824957651,0.1665725578769057
+05,"Gross value added (millions of euro), I Accommodation and food service activities (55-56)",0.753811405985319,0.015245623941276116
+05,"Gross value added (millions of euro), J Information and communication (58-63)",0.3642010163749294,0.5471485036702428
+05,"Gross value added (millions of euro), K Financial and insurance activities (64-66)",0.2422360248447205,0.19254658385093168
+05,"Gross value added (millions of euro), L Real estate activities",-0.2230378317334839,-0.06493506493506493
+05,"Gross value added (millions of euro), M Professional, scientific and technical activities (69-75)",0.22416713721061546,0.003952569169960474
+05,"Gross value added (millions of euro), N Administrative and support service activities (77-82)",-0.4116318464144551,0.2230378317334839
+05,"Gross value added (millions of euro), O Public administration and defence; compulsory social security (84)",0.30434782608695654,0.5866741953698476
+05,"Gross value added (millions of euro), P Education (85)",0.7967250141163185,0.14737436476566912
+05,"Gross value added (millions of euro), Q Human health and social work activities (86-88)",0.5279503105590062,0.611518915866742
+05,"Gross value added (millions of euro), R, S Other service activities (90-96)",0.5098814229249012,0.32806324110671936
+05,"Gross value added (millions of euro), T Activities of households as employers; undifferentiated goods- and services-producing activities of households for own use(97-98)",0.17108977978543197,-0.11462450592885376
+06,"Gross value added (millions of euro), A Agriculture, forestry and fishing (01-03)",0.6318464144551101,0.16883116883116883
+06,"Gross value added (millions of euro), B Mining and quarrying (05-09)",-0.41727837380011296,-0.1225296442687747
+06,"Gross value added (millions of euro), C Manufacturing (10-33)",0.13043478260869565,0.8712591756070017
+06,"Gross value added (millions of euro), D, E Electricity, gas, steam and air conditioning and water supply; sewerage and waste management (35-39)",0.6499153020892151,0.43195934500282324
+06,"Gross value added (millions of euro), F Construction (41-43)",-0.01637492941840768,0.5990965556182948
+06,"Gross value added (millions of euro), G Wholesale and retail trade; repair of motor vehicles and motorcycles (45-47)",0.2795031055900621,0.7029926595143986
+06,"Gross value added (millions of euro), H Transportation and storage (49-53)",0.2738565782044043,0.409373235460192
+06,"Gross value added (millions of euro), I Accommodation and food service activities (55-56)",0.08526256352343309,0.33483907396950874
+06,"Gross value added (millions of euro), J Information and communication (58-63)",-0.23094297007340486,0.3178994918125353
+06,"Gross value added (millions of euro), K Financial and insurance activities (64-66)",-0.15866741953698477,0.32919254658385094
+06,"Gross value added (millions of euro), L Real estate activities",-0.28176171654432525,0.0378317334839074
+06,"Gross value added (millions of euro), M Professional, scientific and technical activities (69-75)",0.08300395256916997,0.42179559570863917
+06,"Gross value added (millions of euro), N Administrative and support service activities (77-82)",0.47261434217955955,0.4997176736307171
+06,"Gross value added (millions of euro), O Public administration and defence; compulsory social security (84)",0.5381140598531903,0.5347261434217956
+06,"Gross value added (millions of euro), P Education (85)",0.33258046301524563,0.19593450028232637
+06,"Gross value added (millions of euro), Q Human health and social work activities (86-88)",0.7944664031620553,0.08300395256916997
+06,"Gross value added (millions of euro), R, S Other service activities (90-96)",0.48842461885940147,-0.032185206098249576
+06,"Gross value added (millions of euro), T Activities of households as employers; undifferentiated goods- and services-producing activities of households for own use(97-98)",-0.18012422360248448,-0.5866741953698476
+07,"Gross value added (millions of euro), A Agriculture, forestry and fishing (01-03)",0.19861660079051383,0.1650197628458498
+07,"Gross value added (millions of euro), B Mining and quarrying (05-09)",-0.6610671936758893,-0.41699604743083
+07,"Gross value added (millions of euro), C Manufacturing (10-33)",-0.26383399209486164,0.5424901185770751
+07,"Gross value added (millions of euro), D, E Electricity, gas, steam and air conditioning and water supply; sewerage and waste management (35-39)",0.30237154150197626,-0.042490118577075096
+07,"Gross value added (millions of euro), F Construction (41-43)",0.029644268774703556,0.1432806324110672
+07,"Gross value added (millions of euro), G Wholesale and retail trade; repair of motor vehicles and motorcycles (45-47)",0.6590909090909091,0.2519762845849802
+07,"Gross value added (millions of euro), H Transportation and storage (49-53)",0.6472332015810277,0.6798418972332015
+07,"Gross value added (millions of euro), I Accommodation and food service activities (55-56)",0.17786561264822134,0.549407114624506
+07,"Gross value added (millions of euro), J Information and communication (58-63)",-0.05138339920948617,0.15217391304347827
+07,"Gross value added (millions of euro), K Financial and insurance activities (64-66)",0.11758893280632411,0.21442687747035574
+07,"Gross value added (millions of euro), L Real estate activities",-0.7391304347826086,-0.07707509881422925
+07,"Gross value added (millions of euro), M Professional, scientific and technical activities (69-75)",0.05533596837944664,0.4051383399209486
+07,"Gross value added (millions of euro), N Administrative and support service activities (77-82)",0.5958498023715415,0.14130434782608695
+07,"Gross value added (millions of euro), O Public administration and defence; compulsory social security (84)",0.8033596837944664,0.5948616600790514
+07,"Gross value added (millions of euro), P Education (85)",0.7144268774703557,0.45553359683794464
+07,"Gross value added (millions of euro), Q Human health and social work activities (86-88)",0.2509881422924901,0.43873517786561267
+07,"Gross value added (millions of euro), R, S Other service activities (90-96)",0.8824110671936759,0.2845849802371542
+07,"Gross value added (millions of euro), T Activities of households as employers; undifferentiated goods- and services-producing activities of households for own use(97-98)",0.5138339920948617,0.2875494071146245
+08,"Gross value added (millions of euro), A Agriculture, forestry and fishing (01-03)",-0.6136363636363636,0.525691699604743
+08,"Gross value added (millions of euro), B Mining and quarrying (05-09)",0.6590909090909091,-0.7183794466403162
+08,"Gross value added (millions of euro), C Manufacturing (10-33)",-0.849802371541502,0.8774703557312253
+08,"Gross value added (millions of euro), D, E Electricity, gas, steam and air conditioning and water supply; sewerage and waste management (35-39)",0.6719367588932806,-0.5474308300395256
+08,"Gross value added (millions of euro), F Construction (41-43)",0.2924901185770751,0.023715415019762844
+08,"Gross value added (millions of euro), G Wholesale and retail trade; repair of motor vehicles and motorcycles (45-47)",0.2598814229249012,0.11067193675889328
+08,"Gross value added (millions of euro), H Transportation and storage (49-53)",-0.3616600790513834,0.6788537549407114
+08,"Gross value added (millions of euro), I Accommodation and food service activities (55-56)",0.5029644268774703,-0.06027667984189723
+08,"Gross value added (millions of euro), J Information and communication (58-63)",-0.7687747035573123,0.6620553359683794
+08,"Gross value added (millions of euro), K Financial and insurance activities (64-66)",0.3448616600790514,-0.2737154150197628
+08,"Gross value added (millions of euro), L Real estate activities",-0.5968379446640316,0.4614624505928854
+08,"Gross value added (millions of euro), M Professional, scientific and technical activities (69-75)",0.3448616600790514,0.11166007905138339
+08,"Gross value added (millions of euro), N Administrative and support service activities (77-82)",0.6511857707509882,-0.38438735177865613
+08,"Gross value added (millions of euro), O Public administration and defence; compulsory social security (84)",-0.40217391304347827,0.4654150197628458
+08,"Gross value added (millions of euro), P Education (85)",0.7697628458498024,-0.733201581027668
+08,"Gross value added (millions of euro), Q Human health and social work activities (86-88)",0.6531620553359684,-0.6511857707509882
+08,"Gross value added (millions of euro), R, S Other service activities (90-96)",0.7895256916996047,-0.8142292490118577
+08,"Gross value added (millions of euro), T Activities of households as employers; undifferentiated goods- and services-producing activities of households for own use(97-98)",0.7094861660079052,-0.6432806324110671
+09,"Gross value added (millions of euro), A Agriculture, forestry and fishing (01-03)",-0.1259175607001694,0.24110671936758893
+09,"Gross value added (millions of euro), B Mining and quarrying (05-09)",0.3958215697346132,0.04912478825522304
+09,"Gross value added (millions of euro), C Manufacturing (10-33)",-0.3867871259175607,0.45454545454545453
+09,"Gross value added (millions of euro), D, E Electricity, gas, steam and air conditioning and water supply; sewerage and waste management (35-39)",0.6194240542066629,0.16770186335403728
+09,"Gross value added (millions of euro), F Construction (41-43)",0.7786561264822134,0.28740824392998304
+09,"Gross value added (millions of euro), G Wholesale and retail trade; repair of motor vehicles and motorcycles (45-47)",0.5742518351214003,0.14511575381140598
+09,"Gross value added (millions of euro), H Transportation and storage (49-53)",0.5121400338791643,0.2140033879164314
+09,"Gross value added (millions of euro), I Accommodation and food service activities (55-56)",0.6758893280632411,0.3020892151326934
+09,"Gross value added (millions of euro), J Information and communication (58-63)",-0.14511575381140598,0.2354601919819311
+09,"Gross value added (millions of euro), K Financial and insurance activities (64-66)",-0.3337097684923772,0.32919254658385094
+09,"Gross value added (millions of euro), L Real estate activities",-0.8181818181818182,-0.07509881422924901
+09,"Gross value added (millions of euro), M Professional, scientific and technical activities (69-75)",0.35064935064935066,0.549407114624506
+09,"Gross value added (millions of euro), N Administrative and support service activities (77-82)",0.7459062676453981,0.1756070016939582
+09,"Gross value added (millions of euro), O Public administration and defence; compulsory social security (84)",0.11349520045172219,0.3156408808582722
+09,"Gross value added (millions of euro), P Education (85)",0.8757763975155279,0.35629587803500845
+09,"Gross value added (millions of euro), Q Human health and social work activities (86-88)",0.40033879164313946,0.2704686617730096
+09,"Gross value added (millions of euro), R, S Other service activities (90-96)",0.8520609824957651,0.2456239412761152
+09,"Gross value added (millions of euro), T Activities of households as employers; undifferentiated goods- and services-producing activities of households for own use(97-98)",0.7605872388481084,0.14511575381140598
+10,"Gross value added (millions of euro), A Agriculture, forestry and fishing (01-03)",0.1857707509881423,0.16883116883116883
+10,"Gross value added (millions of euro), B Mining and quarrying (05-09)",-0.13269339356295878,-0.6205533596837944
+10,"Gross value added (millions of euro), C Manufacturing (10-33)",-0.3958215697346132,0.49407114624505927
+10,"Gross value added (millions of euro), D, E Electricity, gas, steam and air conditioning and water supply; sewerage and waste management (35-39)",-0.014116318464144552,-0.010728402032749858
+10,"Gross value added (millions of euro), F Construction (41-43)",0.6182947487295314,0.23997741389045738
+10,"Gross value added (millions of euro), G Wholesale and retail trade; repair of motor vehicles and motorcycles (45-47)",0.4500282326369283,0.6792772444946358
+10,"Gross value added (millions of euro), H Transportation and storage (49-53)",0.6205533596837944,0.1857707509881423
+10,"Gross value added (millions of euro), I Accommodation and food service activities (55-56)",0.47035573122529645,0.22190852625635235
+10,"Gross value added (millions of euro), J Information and communication (58-63)",-0.11914172783738002,-0.18238283455674761
+10,"Gross value added (millions of euro), K Financial and insurance activities (64-66)",0.46922642574816487,0.163184641445511
+10,"Gross value added (millions of euro), L Real estate activities",0.14398644833427443,0.10107284020327499
+10,"Gross value added (millions of euro), M Professional, scientific and technical activities (69-75)",0.6837944664031621,0.3856578204404291
+10,"Gross value added (millions of euro), N Administrative and support service activities (77-82)",0.5686053077357425,0.4748729531338227
+10,"Gross value added (millions of euro), O Public administration and defence; compulsory social security (84)",0.09655561829474874,0.5448898927159797
+10,"Gross value added (millions of euro), P Education (85)",0.7210615471485037,0.4105025409373235
+10,"Gross value added (millions of euro), Q Human health and social work activities (86-88)",0.6521739130434783,0.23207227555053642
+10,"Gross value added (millions of euro), R, S Other service activities (90-96)",0.8283455674760023,0.13269339356295878
+10,"Gross value added (millions of euro), T Activities of households as employers; undifferentiated goods- and services-producing activities of households for own use(97-98)",0.5697346132128741,0.16431394692264256
+11,"Gross value added (millions of euro), A Agriculture, forestry and fishing (01-03)",-0.308300395256917,0.41106719367588934
+11,"Gross value added (millions of euro), B Mining and quarrying (05-09)",0.23616600790513834,-0.10474308300395258
+11,"Gross value added (millions of euro), C Manufacturing (10-33)",-0.04743083003952569,0.9041501976284585
+11,"Gross value added (millions of euro), D, E Electricity, gas, steam and air conditioning and water supply; sewerage and waste management (35-39)",-0.2134387351778656,0.5662055335968379
+11,"Gross value added (millions of euro), F Construction (41-43)",0.2391304347826087,0.549407114624506
+11,"Gross value added (millions of euro), G Wholesale and retail trade; repair of motor vehicles and motorcycles (45-47)",0.6343873517786561,0.14624505928853754
+11,"Gross value added (millions of euro), H Transportation and storage (49-53)",0.7292490118577075,0.05039525691699605
+11,"Gross value added (millions of euro), I Accommodation and food service activities (55-56)",0.6067193675889329,0.17588932806324112
+11,"Gross value added (millions of euro), J Information and communication (58-63)",-0.1808300395256917,0.17984189723320157
+11,"Gross value added (millions of euro), K Financial and insurance activities (64-66)",-0.508893280632411,0.21541501976284586
+11,"Gross value added (millions of euro), L Real estate activities",-0.041501976284584984,0.3705533596837945
+11,"Gross value added (millions of euro), M Professional, scientific and technical activities (69-75)",-0.34980237154150196,-0.08695652173913043
+11,"Gross value added (millions of euro), N Administrative and support service activities (77-82)",0.49110671936758893,0.2964426877470356
+11,"Gross value added (millions of euro), O Public administration and defence; compulsory social security (84)",0.7658102766798419,0.17984189723320157
+11,"Gross value added (millions of euro), P Education (85)",0.6462450592885376,-0.020750988142292492
+11,"Gross value added (millions of euro), Q Human health and social work activities (86-88)",-0.0958498023715415,0.11264822134387352
+11,"Gross value added (millions of euro), R, S Other service activities (90-96)",0.6897233201581028,0.0800395256916996
+11,"Gross value added (millions of euro), T Activities of households as employers; undifferentiated goods- and services-producing activities of households for own use(97-98)",0.5602766798418972,-0.4624505928853755
+12,"Gross value added (millions of euro), A Agriculture, forestry and fishing (01-03)",0.46936758893280633,0.17391304347826086
+12,"Gross value added (millions of euro), B Mining and quarrying (05-09)",0.3191699604743083,0.18280632411067194
+12,"Gross value added (millions of euro), C Manufacturing (10-33)",-0.33201581027667987,0.6373517786561265
+12,"Gross value added (millions of euro), D, E Electricity, gas, steam and air conditioning and water supply; sewerage and waste management (35-39)",0.2391304347826087,-0.04743083003952569
+12,"Gross value added (millions of euro), F Construction (41-43)",0.7015810276679841,0.21541501976284586
+12,"Gross value added (millions of euro), G Wholesale and retail trade; repair of motor vehicles and motorcycles (45-47)",0.5306324110671937,0.31126482213438733
+12,"Gross value added (millions of euro), H Transportation and storage (49-53)",0.5049407114624506,-0.17094861660079053
+12,"Gross value added (millions of euro), I Accommodation and food service activities (55-56)",0.04841897233201581,0.30039525691699603
+12,"Gross value added (millions of euro), J Information and communication (58-63)",0.2075098814229249,0.16205533596837945
+12,"Gross value added (millions of euro), K Financial and insurance activities (64-66)",-0.5316205533596838,0.16106719367588934
+12,"Gross value added (millions of euro), L Real estate activities",-0.2549407114624506,0.30138339920948615
+12,"Gross value added (millions of euro), M Professional, scientific and technical activities (69-75)",0.20355731225296442,0.5069169960474308
+12,"Gross value added (millions of euro), N Administrative and support service activities (77-82)",0.4851778656126482,0.05434782608695652
+12,"Gross value added (millions of euro), O Public administration and defence; compulsory social security (84)",0.2391304347826087,0.3616600790513834
+12,"Gross value added (millions of euro), P Education (85)",0.30632411067193677,0.40217391304347827
+12,"Gross value added (millions of euro), Q Human health and social work activities (86-88)",0.5148221343873518,-0.11264822134387352
+12,"Gross value added (millions of euro), R, S Other service activities (90-96)",0.7233201581027668,-0.07114624505928854
+12,"Gross value added (millions of euro), T Activities of households as employers; undifferentiated goods- and services-producing activities of households for own use(97-98)",0.5197628458498024,-0.2490118577075099
+13,"Gross value added (millions of euro), A Agriculture, forestry and fishing (01-03)",-0.17786561264822134,0.6175889328063241
+13,"Gross value added (millions of euro), B Mining and quarrying (05-09)",0.2756916996047431,-0.1551383399209486
+13,"Gross value added (millions of euro), C Manufacturing (10-33)",-0.30237154150197626,0.9476284584980237
+13,"Gross value added (millions of euro), D, E Electricity, gas, steam and air conditioning and water supply; sewerage and waste management (35-39)",0.3458498023715415,-0.12450592885375494
+13,"Gross value added (millions of euro), F Construction (41-43)",0.11956521739130435,0.27865612648221344
+13,"Gross value added (millions of euro), G Wholesale and retail trade; repair of motor vehicles and motorcycles (45-47)",-0.024703557312252964,0.3814229249011858
+13,"Gross value added (millions of euro), H Transportation and storage (49-53)",-0.16600790513833993,0.5207509881422925
+13,"Gross value added (millions of euro), I Accommodation and food service activities (55-56)",0.5266798418972332,0.20553359683794467
+13,"Gross value added (millions of euro), J Information and communication (58-63)",-0.23221343873517786,0.3468379446640316
+13,"Gross value added (millions of euro), K Financial and insurance activities (64-66)",0.3685770750988142,0.2717391304347826
+13,"Gross value added (millions of euro), L Real estate activities",0.08794466403162056,0.35968379446640314
+13,"Gross value added (millions of euro), M Professional, scientific and technical activities (69-75)",0.1808300395256917,0.4308300395256917
+13,"Gross value added (millions of euro), N Administrative and support service activities (77-82)",0.7450592885375494,-0.041501976284584984
+13,"Gross value added (millions of euro), O Public administration and defence; compulsory social security (84)",0.5632411067193676,-0.06027667984189723
+13,"Gross value added (millions of euro), P Education (85)",0.1225296442687747,-0.010869565217391304
+13,"Gross value added (millions of euro), Q Human health and social work activities (86-88)",0.36561264822134387,0.16304347826086957
+13,"Gross value added (millions of euro), R, S Other service activities (90-96)",0.46047430830039526,-0.046442687747035576
+13,"Gross value added (millions of euro), T Activities of households as employers; undifferentiated goods- and services-producing activities of households for own use(97-98)",0.283596837944664,-0.6254940711462451
+14,"Gross value added (millions of euro), A Agriculture, forestry and fishing (01-03)",-0.19861660079051383,0.22332015810276679
+14,"Gross value added (millions of euro), B Mining and quarrying (05-09)",0.3715415019762846,0.08893280632411067
+14,"Gross value added (millions of euro), C Manufacturing (10-33)",0.5177865612648221,0.7924901185770751
+14,"Gross value added (millions of euro), D, E Electricity, gas, steam and air conditioning and water supply; sewerage and waste management (35-39)",-0.10770750988142293,-0.05039525691699605
+14,"Gross value added (millions of euro), F Construction (41-43)",0.5217391304347826,0.5553359683794467
+14,"Gross value added (millions of euro), G Wholesale and retail trade; repair of motor vehicles and motorcycles (45-47)",0.616600790513834,0.6284584980237155
+14,"Gross value added (millions of euro), H Transportation and storage (49-53)",0.6729249011857708,0.41007905138339923
+14,"Gross value added (millions of euro), I Accommodation and food service activities (55-56)",0.2964426877470356,0.2766798418972332
+14,"Gross value added (millions of euro), J Information and communication (58-63)",0.5592885375494071,0.6452569169960475
+14,"Gross value added (millions of euro), K Financial and insurance activities (64-66)",-0.015810276679841896,0.07114624505928854
+14,"Gross value added (millions of euro), L Real estate activities",-0.366600790513834,-0.18280632411067194
+14,"Gross value added (millions of euro), M Professional, scientific and technical activities (69-75)",-0.2618577075098814,0.17786561264822134
+14,"Gross value added (millions of euro), N Administrative and support service activities (77-82)",0.42391304347826086,0.6274703557312253
+14,"Gross value added (millions of euro), O Public administration and defence; compulsory social security (84)",0.8181818181818182,0.5968379446640316
+14,"Gross value added (millions of euro), P Education (85)",0.7835968379446641,0.6017786561264822
+14,"Gross value added (millions of euro), Q Human health and social work activities (86-88)",-0.2717391304347826,-0.1442687747035573
+14,"Gross value added (millions of euro), R, S Other service activities (90-96)",0.4515810276679842,0.1857707509881423
+14,"Gross value added (millions of euro), T Activities of households as employers; undifferentiated goods- and services-producing activities of households for own use(97-98)",0.3922924901185771,-0.05731225296442688
+15,"Gross value added (millions of euro), A Agriculture, forestry and fishing (01-03)",0.3557312252964427,0.30138339920948615
+15,"Gross value added (millions of euro), B Mining and quarrying (05-09)",-0.001976284584980237,0.06027667984189723
+15,"Gross value added (millions of euro), C Manufacturing (10-33)",0.6966403162055336,0.8567193675889329
+15,"Gross value added (millions of euro), D, E Electricity, gas, steam and air conditioning and water supply; sewerage and waste management (35-39)",0.39624505928853754,0.1225296442687747
+15,"Gross value added (millions of euro), F Construction (41-43)",-0.4575098814229249,-0.42292490118577075
+15,"Gross value added (millions of euro), G Wholesale and retail trade; repair of motor vehicles and motorcycles (45-47)",0.17786561264822134,0.17094861660079053
+15,"Gross value added (millions of euro), H Transportation and storage (49-53)",0.1482213438735178,0.30434782608695654
+15,"Gross value added (millions of euro), I Accommodation and food service activities (55-56)",-0.591897233201581,-0.3774703557312253
+15,"Gross value added (millions of euro), J Information and communication (58-63)",0.3695652173913043,0.3132411067193676
+15,"Gross value added (millions of euro), K Financial and insurance activities (64-66)",0.33893280632411066,0.5375494071146245
+15,"Gross value added (millions of euro), L Real estate activities",-0.3695652173913043,-0.49407114624505927
+15,"Gross value added (millions of euro), M Professional, scientific and technical activities (69-75)",-0.019762845849802372,0.17588932806324112
+15,"Gross value added (millions of euro), N Administrative and support service activities (77-82)",0.5691699604743083,0.5029644268774703
+15,"Gross value added (millions of euro), O Public administration and defence; compulsory social security (84)",0.6818181818181818,0.558300395256917
+15,"Gross value added (millions of euro), P Education (85)",0.6442687747035574,0.6798418972332015
+15,"Gross value added (millions of euro), Q Human health and social work activities (86-88)",0.849802371541502,0.6758893280632411
+15,"Gross value added (millions of euro), R, S Other service activities (90-96)",0.7183794466403162,0.700592885375494
+15,"Gross value added (millions of euro), T Activities of households as employers; undifferentiated goods- and services-producing activities of households for own use(97-98)",-0.1432806324110672,-0.44466403162055335
+16,"Gross value added (millions of euro), A Agriculture, forestry and fishing (01-03)",0.10375494071146245,-0.005928853754940711
+16,"Gross value added (millions of euro), B Mining and quarrying (05-09)",0.6037549407114624,0.6195652173913043
+16,"Gross value added (millions of euro), C Manufacturing (10-33)",0.48122529644268774,0.7658102766798419
+16,"Gross value added (millions of euro), D, E Electricity, gas, steam and air conditioning and water supply; sewerage and waste management (35-39)",0.05533596837944664,0.1551383399209486
+16,"Gross value added (millions of euro), F Construction (41-43)",0.6126482213438735,0.682806324110672
+16,"Gross value added (millions of euro), G Wholesale and retail trade; repair of motor vehicles and motorcycles (45-47)",0.41007905138339923,0.2628458498023715
+16,"Gross value added (millions of euro), H Transportation and storage (49-53)",0.4090909090909091,0.49703557312252966
+16,"Gross value added (millions of euro), I Accommodation and food service activities (55-56)",0.7203557312252964,0.6185770750988142
+16,"Gross value added (millions of euro), J Information and communication (58-63)",-0.021739130434782608,0.2608695652173913
+16,"Gross value added (millions of euro), K Financial and insurance activities (64-66)",0.4150197628458498,0.5
+16,"Gross value added (millions of euro), L Real estate activities",-0.43478260869565216,-0.17292490118577075
+16,"Gross value added (millions of euro), M Professional, scientific and technical activities (69-75)",0.658102766798419,0.6452569169960475
+16,"Gross value added (millions of euro), N Administrative and support service activities (77-82)",0.5444664031620553,0.4980237154150198
+16,"Gross value added (millions of euro), O Public administration and defence; compulsory social security (84)",0.2598814229249012,0.06818181818181818
+16,"Gross value added (millions of euro), P Education (85)",0.7440711462450593,0.4841897233201581
+16,"Gross value added (millions of euro), Q Human health and social work activities (86-88)",0.16304347826086957,0.2974308300395257
+16,"Gross value added (millions of euro), R, S Other service activities (90-96)",0.7875494071146245,0.7134387351778656
+16,"Gross value added (millions of euro), T Activities of households as employers; undifferentiated goods- and services-producing activities of households for own use(97-98)",0.642292490118577,0.5523715415019763
+17,"Gross value added (millions of euro), A Agriculture, forestry and fishing (01-03)",-0.17885375494071146,0.2756916996047431
+17,"Gross value added (millions of euro), B Mining and quarrying (05-09)",0.6907114624505929,-0.06818181818181818
+17,"Gross value added (millions of euro), C Manufacturing (10-33)",-0.1600790513833992,0.9219367588932806
+17,"Gross value added (millions of euro), D, E Electricity, gas, steam and air conditioning and water supply; sewerage and waste management (35-39)",-0.037549407114624504,0.31225296442687744
+17,"Gross value added (millions of euro), F Construction (41-43)",-0.12351778656126482,0.6788537549407114
+17,"Gross value added (millions of euro), G Wholesale and retail trade; repair of motor vehicles and motorcycles (45-47)",0.2994071146245059,0.40217391304347827
+17,"Gross value added (millions of euro), H Transportation and storage (49-53)",-0.030632411067193676,-0.09486166007905138
+17,"Gross value added (millions of euro), I Accommodation and food service activities (55-56)",0.3349802371541502,0.3409090909090909
+17,"Gross value added (millions of euro), J Information and communication (58-63)",-0.6472332015810277,0.44861660079051385
+17,"Gross value added (millions of euro), K Financial and insurance activities (64-66)",-0.5049407114624506,0.17687747035573123
+17,"Gross value added (millions of euro), L Real estate activities",-0.1482213438735178,0.1422924901185771
+17,"Gross value added (millions of euro), M Professional, scientific and technical activities (69-75)",0.46936758893280633,0.038537549407114624
+17,"Gross value added (millions of euro), N Administrative and support service activities (77-82)",0.3438735177865613,0.35177865612648224
+17,"Gross value added (millions of euro), O Public administration and defence; compulsory social security (84)",0.24802371541501977,0.07707509881422925
+17,"Gross value added (millions of euro), P Education (85)",0.30632411067193677,0.6264822134387352
+17,"Gross value added (millions of euro), Q Human health and social work activities (86-88)",0.7539525691699605,-0.09288537549407115
+17,"Gross value added (millions of euro), R, S Other service activities (90-96)",0.4772727272727273,-0.3547430830039526
+17,"Gross value added (millions of euro), T Activities of households as employers; undifferentiated goods- and services-producing activities of households for own use(97-98)",0.3577075098814229,-0.07312252964426877
+18,"Gross value added (millions of euro), A Agriculture, forestry and fishing (01-03)",-0.3547430830039526,0.7065217391304348
+18,"Gross value added (millions of euro), B Mining and quarrying (05-09)",-0.13339920948616601,0.41106719367588934
+18,"Gross value added (millions of euro), C Manufacturing (10-33)",-0.4407114624505929,0.6808300395256917
+18,"Gross value added (millions of euro), D, E Electricity, gas, steam and air conditioning and water supply; sewerage and waste management (35-39)",0.06422924901185771,0.36363636363636365
+18,"Gross value added (millions of euro), F Construction (41-43)",0.4950592885375494,0.1907114624505929
+18,"Gross value added (millions of euro), G Wholesale and retail trade; repair of motor vehicles and motorcycles (45-47)",-0.2598814229249012,0.27964426877470355
+18,"Gross value added (millions of euro), H Transportation and storage (49-53)",0.7035573122529645,-0.6126482213438735
+18,"Gross value added (millions of euro), I Accommodation and food service activities (55-56)",-0.11561264822134387,0.3339920948616601
+18,"Gross value added (millions of euro), J Information and communication (58-63)",-0.41699604743083,0.7035573122529645
+18,"Gross value added (millions of euro), K Financial and insurance activities (64-66)",-0.08992094861660078,0.22332015810276679
+18,"Gross value added (millions of euro), L Real estate activities",-0.30632411067193677,0.24209486166007904
+18,"Gross value added (millions of euro), M Professional, scientific and technical activities (69-75)",0.26778656126482214,-0.4515810276679842
+18,"Gross value added (millions of euro), N Administrative and support service activities (77-82)",0.7361660079051383,-0.3932806324110672
+18,"Gross value added (millions of euro), O Public administration and defence; compulsory social security (84)",0.039525691699604744,-0.20355731225296442
+18,"Gross value added (millions of euro), P Education (85)",0.09683794466403162,0.4041501976284585
+18,"Gross value added (millions of euro), Q Human health and social work activities (86-88)",0.5948616600790514,-0.022727272727272728
+18,"Gross value added (millions of euro), R, S Other service activities (90-96)",0.7519762845849802,-0.5790513833992095
+18,"Gross value added (millions of euro), T Activities of households as employers; undifferentiated goods- and services-producing activities of households for own use(97-98)",0.43873517786561267,-0.6363636363636364
+19,"Gross value added (millions of euro), A Agriculture, forestry and fishing (01-03)",-0.06027667984189723,0.016798418972332016
+19,"Gross value added (millions of euro), B Mining and quarrying (05-09)",-0.7055335968379447,0.37648221343873517
+19,"Gross value added (millions of euro), C Manufacturing (10-33)",-0.3804347826086957,0.8260869565217391
+19,"Gross value added (millions of euro), D, E Electricity, gas, steam and air conditioning and water supply; sewerage and waste management (35-39)",-0.43873517786561267,0.7134387351778656
+19,"Gross value added (millions of euro), F Construction (41-43)",0.11462450592885376,0.20553359683794467
+19,"Gross value added (millions of euro), G Wholesale and retail trade; repair of motor vehicles and motorcycles (45-47)",-0.3952569169960474,0.2618577075098814
+19,"Gross value added (millions of euro), H Transportation and storage (49-53)",0.658102766798419,-0.045454545454545456
+19,"Gross value added (millions of euro), I Accommodation and food service activities (55-56)",-0.0533596837944664,0.3932806324110672
+19,"Gross value added (millions of euro), J Information and communication (58-63)",0.06620553359683795,-0.3606719367588933
+19,"Gross value added (millions of euro), K Financial and insurance activities (64-66)",0.05632411067193676,0.2885375494071146
+19,"Gross value added (millions of euro), L Real estate activities",0.5849802371541502,-0.023715415019762844
+19,"Gross value added (millions of euro), M Professional, scientific and technical activities (69-75)",0.5434782608695652,0.13339920948616601
+19,"Gross value added (millions of euro), N Administrative and support service activities (77-82)",0.20553359683794467,0.2025691699604743
+19,"Gross value added (millions of euro), O Public administration and defence; compulsory social security (84)",0.13339920948616601,-0.3349802371541502
+19,"Gross value added (millions of euro), P Education (85)",0.7608695652173914,-0.4051383399209486
+19,"Gross value added (millions of euro), Q Human health and social work activities (86-88)",0.48122529644268774,-0.3695652173913043
+19,"Gross value added (millions of euro), R, S Other service activities (90-96)",0.5098814229249012,0.12648221343873517
+19,"Gross value added (millions of euro), T Activities of households as employers; undifferentiated goods- and services-producing activities of households for own use(97-98)",-0.5899209486166008,-0.029644268774703556
+21,"Gross value added (millions of euro), A Agriculture, forestry and fishing (01-03)",-0.1976284584980237,-0.4426877470355731
+21,"Gross value added (millions of euro), B Mining and quarrying (05-09)",0.20059288537549408,-0.2124505928853755
+21,"Gross value added (millions of euro), C Manufacturing (10-33)",0.12845849802371542,0.018774703557312252
+21,"Gross value added (millions of euro), D, E Electricity, gas, steam and air conditioning and water supply; sewerage and waste management (35-39)",0.08300395256916997,0.5118577075098815
+21,"Gross value added (millions of euro), F Construction (41-43)",0.37648221343873517,0.13636363636363635
+21,"Gross value added (millions of euro), G Wholesale and retail trade; repair of motor vehicles and motorcycles (45-47)",0.3241106719367589,0.6590909090909091
+21,"Gross value added (millions of euro), H Transportation and storage (49-53)",0.21640316205533597,0.7835968379446641
+21,"Gross value added (millions of euro), I Accommodation and food service activities (55-56)",0.32608695652173914,0.5830039525691699
+21,"Gross value added (millions of euro), J Information and communication (58-63)",0.5760869565217391,0.21640316205533597
+21,"Gross value added (millions of euro), K Financial and insurance activities (64-66)",-0.1966403162055336,-0.16403162055335968
+21,"Gross value added (millions of euro), L Real estate activities",0.3932806324110672,0.5899209486166008
+21,"Gross value added (millions of euro), M Professional, scientific and technical activities (69-75)",0.22727272727272727,0.20355731225296442
+21,"Gross value added (millions of euro), N Administrative and support service activities (77-82)",0.2381422924901186,0.5
+21,"Gross value added (millions of euro), O Public administration and defence; compulsory social security (84)",0.5988142292490118,0.49209486166007904
+21,"Gross value added (millions of euro), P Education (85)",0.22035573122529645,-0.06027667984189723
+21,"Gross value added (millions of euro), Q Human health and social work activities (86-88)",0.2618577075098814,0.40019762845849804
+21,"Gross value added (millions of euro), R, S Other service activities (90-96)",0.16600790513833993,0.08201581027667984
+21,"Gross value added (millions of euro), T Activities of households as employers; undifferentiated goods- and services-producing activities of households for own use(97-98)",-0.3922924901185771,-0.5049407114624506
