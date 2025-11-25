@@ -12,7 +12,7 @@ warnings.filterwarnings("ignore")
 # DATA
 # ============================================================================
 
-df_raw_unfilter = pd.read_csv("data/final_economic_data_regional.csv")
+df_raw_unfilter = pd.read_csv("data/final_economic_data.csv")
 df_raw = df_raw_unfilter[df_raw_unfilter['Region'] == 1].reset_index(drop=True)
 df_raw = df_raw[(df_raw['Year'] > 2010) & (df_raw['Year'] < 2022)]
 
@@ -24,7 +24,6 @@ TARGET_VARIABLE = 'GDP per capita (euro at current prices)'
 FEATURE_VARIABLES = df_raw.columns.tolist()
 FEATURE_VARIABLES.remove('Year')
 FEATURE_VARIABLES.remove('Region')
-FEATURE_VARIABLES.remove('Municipality')
 FEATURE_VARIABLES.remove(TARGET_VARIABLE)
 FEATURE_VARIABLES = [
     f for f in FEATURE_VARIABLES 
@@ -169,7 +168,7 @@ def make_lag_features(df: pd.DataFrame, target_col: str, feature_cols: List[str]
     for lag in range(1, max_lag + 1):
         result[f'{target_col}_lag{lag}'] = df[target_col].shift(lag)
     for col in feature_cols:
-        for lag in range(0, max_lag + 1):
+        for lag in range(1, max_lag + 1):
             result[f'{col}_lag{lag}'] = df[col].shift(lag)
     result['time_idx'] = np.arange(len(df))
     if add_cyclical:
@@ -207,7 +206,7 @@ print(f"Number of features: {X_train.shape[1]}")
 # RANDOMIZED FEATURE SELECTION LOOP
 # ============================================================================
 
-N_TRIALS = 50000
+N_TRIALS = 10000
 results = []
 
 print(f"\n Randomized feature selection with {N_TRIALS} trials")
@@ -258,7 +257,7 @@ for t in range(N_TRIALS):
     if (t + 1) % 100 == 0:
         print(f"Completed {t + 1}/{N_TRIALS} trials, successful so far: {len(results)}")
 
-results_sorted = sorted(results, key=lambda r: r['test_rmse'])
+results_sorted = sorted(results, key=lambda r: r['train_rmse'])
 
 print(f"\nRandomized feature selection completed. Successful trials: {len(results)}")
 print("Top 10 results by test RMSE with model coefficients:")
