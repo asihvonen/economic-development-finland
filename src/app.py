@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, jsonify, abort
 from pathlib import Path
 from config import hg_token
 from map_update import map_script
+from llm import LLM
 #from llm import LLM
 
 app = Flask(__name__)
@@ -58,11 +59,11 @@ def chat():
     user_message = data.get("message", "")
     current_map_key = data.get("current_map", "GDP per capita (euro at current prices)")
     try:
-        #llm = LLM()
-        #response = llm.analyze_scenario(scenario = user_message, region_specific=False) # needs to be of form list[industry, change]           
-        response = ["Gross value added (millions of euro), G Wholesale and retail trade; repair of motor vehicles and motorcycles (45-47)", "35%"]
+        llm = LLM()
+        response = llm.analyze_scenario(scenario = user_message) # needs to be of form tuple[industry, change]           
+        # response = ("Gross value added (millions of euro), G Wholesale and retail trade; repair of motor vehicles and motorcycles", "35%")
         # Create new map using map_script
-        industry, change = response
+        industry, change, summary = response
         change_value = float(change.strip('%')) / 100  # Convert percentage to decimal
         
         # Initialize map_script with region (you might want to make this dynamic)

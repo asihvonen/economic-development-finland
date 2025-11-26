@@ -1,4 +1,6 @@
 from curses import raw
+import json
+import re
 from openai import OpenAI
 import pandas as pd
 import os
@@ -11,42 +13,28 @@ from typing import Optional, Dict
 PROMPT_TEMPLATE = """
     You are an economic impact analysis assistant that specializes in the economy of Finland and its regions.
     Given a scenario, identify:
-    1. The most affected region (x_1)
-    2. The most affected economic factor/industry (y_i)
-    3. The percentage change in that factor (x_2)
-    4. A qualitative description of how this affects GDP per capita and household disposable income in x_1.
+    1. The most affected industry in the country
+    2. The percentage change in that industry due to the scenario
+    3. A qualitative description of how this will generally affect GDP per capita and household disposable income in the regions of Finland.
 
-    You may use economic logic, regional specialization, and trade structure reasoning. 
-
-    You will be provided economic data which you will use for realism and to align your classifications accordingly. The economic data is structured as follows:
-    Region | Year | Economic factor 1 | Economic factor 2 | ... | Economic factor n
-    ---|---|---|---|---|---
-    01 | 2015 | value_1_1 | value_1_2 | ... | value_1_n
-    ...| ... | ... | ... | ... | ...
-    21 | 2022 | value_m_1 | value_m_2 | ... | value_m_n
-
-    Regions are labeled by their region codes (from 01 to 21) according to the Regions 2025 classification by Statistics Finland.
+    You will use economic logic, regional specialization, and the provided economic data to inform your analysis. 
+    The industries are identified by their "Gross value added (millions of euro), Industry Name" labels in the data.
+    The percentage change should be a string formatted with a '%' sign, e.g. '5%' or '-2.5%'.
 
     ---
 
     ### Scenario
     {scenario}
 
-    ### Region specific?
-    {region_specific}
-
-    ### (Optional) Economic Data Context
+    ### Economic Data Context
     {data_context}
 
     ---
 
-    ### Output Format (must be strictly JSON)
-    {{
-        "most_affected_region": "string",
-        "most_affected_factor": "string",
-        "change_in_factor_percent": "float",
-        "impact_summary": "string",
-    }}
+    ### Output Format (a list)
+    "most_affected_industry": "string",
+    "change_in_industry_percent": "string",
+    "impact_summary": "string",
 
 """
 
@@ -55,83 +43,70 @@ class LLM:
         self.api_key = os.environ["OPENAI_API_KEY"]
         self.client = OpenAI(api_key=self.api_key)
         self.model = "gpt-4o-mini"
-        self.economic_data = pd.read_csv(Path.cwd() / "data" / "regional_economic_data.csv")
+        self.context_window = 128000  # tokens
+        self.economic_data = pd.read_csv(Path.cwd().parent / "data" / "economic_data_context.csv").to_markdown()
 
     def analyze_scenario(
         self,
         scenario: str,
-        region_specific: bool= False,
-    ) -> Dict:
+    ) -> tuple[str, str]:
         """
         Returns a normalized dict with:
-        - most_affect_factor (str)
-        - change_in_factor_percent(str)
+        - most_affected_industry (str)
+        - change_in_industry_percent(str)
         - impact_summary (str)
         """
-        data_context = self.economic_data.describe(include='all').to_string()
 
         prompt = PROMPT_TEMPLATE.format(
             scenario=scenario,
-            region_specific="Yes" if region_specific else "No",
-            data_context=data_context,
+            data_context=self.economic_data,
         )
 
         enc = tiktoken.encoding_for_model(self.model)
-        print(f"Length of prompt tokens:{len(enc.encode(prompt))}")
-
-        if len(enc.encode(prompt)) > 10000:
-            raise ValueError("Prompt too long for model context window.")
+        if len(enc.encode(prompt)) > self.context_window:
+            raise ValueError(f"Prompt of length {len(enc.encode(prompt))} tokens is too long for model context window of {self.context_window} tokens.")
+        
         response = self.client.responses.create(
             model=self.model,
             input=prompt,
         )
 
-        raw_output = response.to_dict()["content"]
+        # get text output from response
+        response_dict = response.to_dict()
+        output_text = None
+        try:
+            outputs = response_dict.get("output", [])
+            for item in outputs:
+                for content in item.get("content", []):
+                    if content.get("type") == "output_text" and content.get("text"):
+                        output_text = content.get("text")
+                        break
+                if output_text:
+                    break
+        except Exception as error:
+            raise ValueError(f"Could not extract output text from LLM response: {error}")
 
-        most = None
-        change = None
-        summary = None
+        # extract JSON object from output_text
+        json_text = None
+        match = re.search(r"```(?:json)?\s*({.*?})\s*```", output_text, re.DOTALL)
+        if match:
+            json_text = match.group(1)
+        else:
+            # try to find first { ... } in text
+            match = re.search(r"({.*})", output_text, re.DOTALL)
+            if match:
+                json_text = match.group(1)
 
-        # Normalize different possible raw formats
-        if isinstance(raw_output, dict):
-            most = raw_output.get("most_affected_factor") or raw_output.get("factor") or raw_output.get("industry") or raw_output.get("most_affected")
-            change = raw_output.get("change_in_factor_percent") or raw_output.get("change") or raw_output.get("percent_change")
-            summary = raw_output.get("impact_summary") or raw_output.get("summary") or raw_output.get("explanation")
-        elif isinstance(raw_output, (list, tuple)):
-            if len(raw_output) >= 1:
-                most = raw_output[0]
-            if len(raw_output) >= 2:
-                change = raw_output[1]
-            if len(raw_output) >= 3:
-                summary = raw_output[2]
-        elif isinstance(raw_output, (int, float)):
-            # numeric -> treat as percent change, no factor known
-            change = f"{raw_output}%"
-        elif isinstance(raw_output, str):
-            # If the model returned a freeform string, use it as the summary
-            summary = raw
+        if not json_text:
+            raise ValueError(f"Could not find JSON object from LLM output. Output: {output_text}")
+        
+        try:
+            parsed = json.loads(json_text)
+        except Exception as error:
+            raise ValueError(f"Could not parse JSON from output text: {error}.")
+        
+        industry = parsed.get("most_affected_industry")
+        change = parsed.get("change_in_industry_percent")
+        summary = parsed.get("impact_summary")
 
-        # Ensure change is a percent string like '5%' or '-2.5%'
-        if isinstance(change, (int, float)):
-            change = f"{change}%"
-        elif isinstance(change, str):
-            s = change.strip()
-            # if it's a bare number, append '%'
-            try:
-                # allow existing '%' but also accept plain numbers
-                _ = float(s.replace("%", ""))
-                if not s.endswith("%"):
-                    s = s + "%"
-                change = s
-            except Exception:
-                change = s  # leave as-is if not numeric-like
-
-        most = most or "unknown"
-        change = change or "0%"
-        summary = summary or f"Predicted {change} change in {most}."
-
-        return {
-            "most_affected_factor": most,
-            "change_in_factor_percent": change,
-            "impact_summary": summary
-        }
+        return (industry, change, summary)
