@@ -1,8 +1,14 @@
+
+#%%
 import numpy as np
 import pandas as pd
 import plotly.express as px
 import matplotlib.pyplot as plt
 import plotly.graph_objects as go
+import folium
+import branca
+import geopandas
+#%%
 
 def plot_k_means_pca(economic_factors: pd.DataFrame):
     """
@@ -117,3 +123,42 @@ def plotly_spider_chart(categories: list, values: list[list], labels: list):
     )
 
     fig.show()
+
+
+def plotly_radar(categories: list, values: list[list], labels: list):
+    region_labels = [f'Region {cat}' for cat in categories]
+
+    # Create figure
+    fig = go.Figure()
+
+    # Transpose the data - now each sector is a trace
+    # Each column in values becomes a row (one trace per sector)
+    for i, sector_label in enumerate(labels):
+        sector_values = [row[i] for row in values]  # Get column i from all rows
+        fig.add_trace(go.Scatterpolar(
+            r=sector_values,
+            theta=region_labels,
+            fill='toself',
+            name=sector_label
+        ))
+
+    # Update layout
+    fig.update_layout(
+        polar=dict(
+            radialaxis=dict(
+                visible=True,
+                range=[0, max(max(row) for row in values) * 1.1]
+            )
+        ),
+        showlegend=True,
+        title='Gross Value Added by Region and Sector',
+        height=600
+    )
+
+    return fig
+
+
+
+
+
+
