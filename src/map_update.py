@@ -8,6 +8,7 @@ import folium
 import branca.colormap as cm
 from folium.plugins import TimeSliderChoropleth
 from folium_choropleth import DisplayedMap
+from difflib import get_close_matches
 class map_script:
     def __init__(self,region_id,value_being_shown):
         self.df_data = pd.read_csv('data/final_economic_data.csv', index_col=False)
@@ -21,6 +22,21 @@ class map_script:
     def update_map(self,most_affected_industry,change):
         # find top 5 correlated industries     
         #base_corr = self.df_corr.loc[features, most_affected_industry].abs().values
+        gva_columns = [col for col in self.df_data.columns if col.startswith('Gross value added')]
+        matches = get_close_matches(
+            word=most_affected_industry, 
+            possibilities=gva_columns, 
+            n=1, 
+            cutoff=0.6
+        )
+
+        if matches:
+            matched_industry_column = matches[0]
+            most_affected_industry = matched_industry_column
+        else:
+            # Fallback if no match meets the 0.6 cutoff
+            print(f"Warning: No good match found for '{most_affected_industry}'. Skipping map update for this industry.")
+            return
         region_features = []
         for region in self.all_regions:
             try:
@@ -45,7 +61,7 @@ class map_script:
         # corr_series maps region -> correlation scalar for the shown value column
         corr_series = sub[self.value_being_shown_name].astype(float)
         # apply per-region updates for YEAR = 2020 (or change mask to desired year)
-        year_mask = (self.df_data['Year'] == 2020)
+        year_mask = (self.df_data['Year'] == 2022)
         year_data = self.df_data.loc[year_mask].copy()
         regions = year_data['Region'].astype(str).values
 
@@ -94,7 +110,7 @@ class map_script:
         self.df_data.loc[year_mask, self.value_being_shown_name] = new_vals
 
         # prepare updates dict for map rendering
-        year_data_updated = self.df_data[self.df_data['Year'] == 2020]
+        year_data_updated = self.df_data[self.df_data['Year'] == 2022]
         updates = dict(zip(year_data_updated['Region'].astype(str), year_data_updated[self.value_being_shown_name]))
         
         #somehow store updated data
