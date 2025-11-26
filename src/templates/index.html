@@ -365,7 +365,7 @@
                 const responseData = {
                     userMessage: message,
                     // Format LLM response to explicitly show the user message first on the updated map screen
-                    botResponse: `<b>LLM Analysis:</b> Your scenario was: "${message}"<br><br>The model projected that <b>${Array.isArray(data.response) ? data.response.join(' will change by ') : data.response}</b>. The map now shows the simulation outcome.`
+                    botResponse: `<b>LLM Analysis:</b> Your scenario was: "${message}"<br><br>The model projected that <b>${data.response}</b>. The map now shows the simulation outcome.`
                 };
                 
                 // Save the data to session storage
