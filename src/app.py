@@ -9,15 +9,14 @@ app = Flask(__name__)
 MAP_DEFINITIONS = {
     "disposable_income": {"path": "visualizations/disposable_income.html", "name": "Disposable income, net"},
     "GDP_per_cap": {"path": "visualizations/GDP_per_cap.html", "name": "GDP per capita (euro at current prices)"},
-    "business_vitality_index": {"path": "visualizations/business_vitality_index.html", "name": "Business Vitality"},
-    "demographic_sustainability_index": {"path": "visualizations/demographic_sustainability_index.html", "name": "Demographic Sustainability"},
-    "economic_prosperity_index": {"path": "visualizations/economic_prosperity_index.html", "name": "Economic Prosperity"},
+    "structure_index": {"path": "visualizations/structure_index.html", "name": "Structure Index"},
+    "labour_index": {"path": "visualizations/labour_index.html", "name": "Labour Index"},
     "no_slider": {"path": "visualizations/no_slider.html", "name": "More info"},
     "updated": {"path": "visualizations/updated_map.html", "name": "Updated Scenario Map (Simulated)"},
 }
 
 # The list of maps initially available in the dropdown
-INITIAL_MAP_KEYS = ["disposable_income", "GDP_per_cap", "business_vitality_index", "demographic_sustainability_index", "economic_prosperity_index","no_slider"]
+INITIAL_MAP_KEYS = ["disposable_income", "GDP_per_cap", "structure_index", "labour_index", "no_slider"]
 
 # Global variable (or temporary store) to manage the current list of available map keys
 # NOTE: In a real app, this should be managed per-session.

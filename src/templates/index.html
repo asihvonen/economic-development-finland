@@ -19,7 +19,7 @@
                 <select id="map-select">
                     {% for key, map_data in available_maps.items() %}
                         {% set mode_type = 'both' %}
-                        {% if key in ['business_vitality_index', 'demographic_sustainability_index', 'economic_prosperity_index', 'no_slider'] %}
+                        {% if key in ['structure_index', 'labour_index', 'no_slider'] %}
                             {% set mode_type = 'stats' %}
                         {% elif key == 'updated' %}
                             {% set mode_type = 'chat' %}
