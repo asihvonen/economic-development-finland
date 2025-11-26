@@ -39,7 +39,7 @@ PROMPT_TEMPLATE = """
 
     most_affected_industry: The industry most impacted by the scenario. The industry must match exactly one of the industry names from the economic data context.
     change_in_industry_percent: The percentage change in that industry as a string with a '%' sign.
-    impact_summary: A brief summary of the expected impact on GDP per capita and household disposable income across Finland and its regions.
+    impact_summary: A paragraph on the expected impact on GDP per capita and household disposable income across Finland and its regions.
 
 """
 
@@ -47,8 +47,8 @@ class LLM:
     def __init__(self):
         self.api_key = os.environ["OPENAI_API_KEY"]
         self.client = OpenAI(api_key=self.api_key)
-        self.model = "gpt-4o-mini"
-        self.context_window = 128000  # tokens, determined by model
+        self.model = "gpt-5-mini-2025-08-07"  #"gpt-4o-mini"
+        self.context_window = 400000  # 128000 - tokens, determined by model
         self.economic_data = pd.read_csv(Path.cwd().parent / "economic-development-finland" / "data" / "economic_data_context.csv").to_markdown()
 
     def analyze_scenario(
