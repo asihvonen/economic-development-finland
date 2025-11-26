@@ -81,10 +81,10 @@
 <script>
     let currentMode = 'chat';
     const mapSelect = document.getElementById('map-select');
-    const mapIframe = document.getElementById('map-iframe'); // NEW: Reference to the iframe
+    const mapIframe = document.getElementById('map-iframe');
     const updatedMapKey = 'updated';
     // Ensure currentMapKey is retrieved correctly from the template
-    let currentMapKey = '{{ current_map_key }}'; // Changed to 'let' as we might update the internal state
+    let currentMapKey = '{{ current_map_key }}';
     
     // Elements for control
     const userInput = document.getElementById('user-input');
@@ -109,8 +109,9 @@
             // Clear the intro message
             chatBox.innerHTML = '';
             
-            // Display User Message in chat-box (history)
-            chatBox.insertAdjacentHTML('afterbegin', `<p class="user"><b>You:</b> ${data.userMessage}</p>`);
+            // Display User Message FIRST in chat-box (history)
+            // Use 'beforeend' to ensure messages are appended chronologically
+            chatBox.insertAdjacentHTML('beforeend', `<p class="user"><b>You:</b> ${data.userMessage}</p>`);
 
             // If it's the updated map, move the full bot response to the main output area
             if (currentMapKey === updatedMapKey) {
@@ -125,18 +126,18 @@
                         Map reflects the updated simulation.
                     </p>
                     <hr>
-                    <p class="bot"><b>LLM Analysis:</b> ${data.botResponse}</p>
+                    <p class="bot">${data.botResponse}</p>
                 `;
             } else {
-                 // Prepend bot response to chat-box (history) if not on updated map
-                 chatBox.insertAdjacentHTML('afterbegin', `<p class="bot"><b>Bot:</b> Simulation Complete.</p>`);
+                 // Append bot response to chat-box (history) if not on updated map
+                 chatBox.insertAdjacentHTML('beforeend', `<p class="bot"><b>Bot:</b> Simulation Complete.</p>`);
             }
             
             // Clear storage so it doesn't reappear on subsequent reloads
             sessionStorage.removeItem(CHAT_RESPONSE_KEY);
             
             // Scroll to bottom
-            chatBox.scrollTop = 0;
+            chatBox.scrollTop = chatBox.scrollHeight;
         } else {
              // If no pending data, and it's an updated map, display a status message
              if (currentMapKey === updatedMapKey) {
@@ -339,9 +340,12 @@
 
         // Update chat box immediately with user message and status
         chatBox.innerHTML = ''; // Clear existing
-        chatBox.insertAdjacentHTML('afterbegin', `<p class="user"><b>You:</b> ${message}</p>`);
-        chatBox.insertAdjacentHTML('afterbegin', `<p class="bot"><b>Bot:</b> Running simulation...</p>`);
+        // Use 'beforeend' to ensure chronological flow
+        chatBox.insertAdjacentHTML('beforeend', `<p class="user"><b>You:</b> ${message}</p>`);
+        chatBox.insertAdjacentHTML('beforeend', `<p class="bot"><b>Bot:</b> Running simulation...</p>`);
 
+        // Scroll to bottom
+        chatBox.scrollTop = chatBox.scrollHeight;
 
         try {
             // Fetch model response
@@ -360,7 +364,8 @@
                 // Prepare data to store
                 const responseData = {
                     userMessage: message,
-                    botResponse: Array.isArray(data.response) ? data.response.join(' will change by ') : data.response // Format LLM response
+                    // Format LLM response to explicitly show the user message first on the updated map screen
+                    botResponse: `<b>LLM Analysis:</b> Your scenario was: "${message}"<br><br>The model projected that <b>${Array.isArray(data.response) ? data.response.join(' will change by ') : data.response}</b>. The map now shows the simulation outcome.`
                 };
                 
                 // Save the data to session storage
@@ -373,15 +378,17 @@
             
             // Fallback for failed map update (still display error immediately if no redirect)
             chatBox.innerHTML = '';
-            chatBox.insertAdjacentHTML('afterbegin', `<p class="user"><b>You:</b> ${message}</p>`);
-            chatBox.insertAdjacentHTML('afterbegin', `<p class="bot"><b>Bot:</b> Map update failed, but simulation ran: ${data.response}</p>`);
+            // Use 'beforeend' for chronological flow
+            chatBox.insertAdjacentHTML('beforeend', `<p class="user"><b>You:</b> ${message}</p>`);
+            chatBox.insertAdjacentHTML('beforeend', `<p class="bot"><b>Bot:</b> Map update failed, but simulation ran: ${data.response}</p>`);
             isChatAvailable = false;
             
         } catch (error) {
             console.error('Error:', error);
             chatBox.innerHTML = '';
-            chatBox.insertAdjacentHTML('afterbegin', `<p class="user"><b>You:</b> ${message}</p>`);
-            chatBox.insertAdjacentHTML('afterbegin', `<p class="bot"><b>Error:</b> ${error.message}</p>`);
+            // Use 'beforeend' for chronological flow
+            chatBox.insertAdjacentHTML('beforeend', `<p class="user"><b>You:</b> ${message}</p>`);
+            chatBox.insertAdjacentHTML('beforeend', `<p class="bot"><b>Error:</b> ${error.message}</p>`);
             isChatAvailable = false;
         }
         // Ensure input is re-enabled if no redirect happened (error case)
