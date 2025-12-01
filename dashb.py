@@ -23,6 +23,9 @@ df_year = df[df['Year'] == year]
 df_lastyear = df[df['Year'] == year - 1]
 
 #%%
+df_reg = pd.read_csv("data/region_description.csv", index_col=False)
+
+#%%
 
 industries = list(filter(lambda x: 'Gross value added (millions of euro)' in x, df.columns))
 col_short_map_compact = {
@@ -58,8 +61,8 @@ def calc_delta(column: str) -> float:
 st.set_page_config(layout="wide")
 #%%
 with st.sidebar:
-    st.markdown(f"<h1 style='font-size: 60px;'>Region number: {region}</h1>", unsafe_allow_html=True)
-    st.markdown("Uusimaa (the Helsinki–Uusimaa region) is Finland’s economic heart — it includes the capital Helsinki and produces roughly two-fifths of the country’s GDP while hosting about a third of Finnish firms and jobs. The region’s GDP per capita is well above the national average (around €61,100 in recent regional figures), and it concentrates a large share of Finland’s R&D and high-productivity activity. Uusimaa’s strongest industries are knowledge-intensive services (ICT, professional, scientific & technical services), wholesale/retail and logistics, health & social services, and a significant maritime/port cluster — making it a dynamic innovation and export hub.")
+    st.markdown(f"<h1 style='font-size: 60px;'>Region: {df_reg[df_reg['Region'] == int(region)]['Name'].values[0]}</h1>", unsafe_allow_html=True)
+    st.markdown(df_reg[df_reg['Region'] == int(region)]['Description'].values[0])
     st.metric(label='Population', value=df_year['Total (population)'], border=True, delta=calc_delta('Total (population)'))
     st.metric(label='Unemployed jobseekers',value=df_year['Unemployed jobseekers'], border=True, delta=calc_delta('Unemployed jobseekers'), delta_color="inverse")
     st.metric(label='Imports', value=df_year['Imports (euro)'], border=True, delta=calc_delta('Imports (euro)'))
