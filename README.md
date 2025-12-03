@@ -13,19 +13,23 @@ This project provides a comprehensive tool for visualising and predicting econom
 - **Custom Economic Indices**: Specialized measures for Labour & Productivity and Economic Structure & Human Capital
 - **Regional Dashboards**: Detailed economic profiles for each region, including dominant industries and development trends
 - **Models**: Multiple machine learning models designed to fit the data
+
 ## What This Tool Does
 
 The application helps users understand:
+
 - How different Finnish regions are developing economically
 - Which regions are most vulnerable to specific economic shocks
 - How events like energy price increases or trade disruptions might affect different areas
 - Regional differences in economic structure and workforce composition
 
 ## Project Structure
+
 ```
 ├── data/                                 # Economic datasets and statistics
 ├── visualizations/                       # Interactive map HTML files
-├── src/                                # Web interface
+├── src/  				  # Web interface
+├── models/                               # Different models tried
 ```
 
 ## Data Sources
@@ -42,6 +46,7 @@ The dataset covers 19 Finnish regions from 2000-2022 with 85 different economic 
 ### Predictions
 
 The tool uses **Ridge Linear Regression** to predict GDP per capita and household disposable income. This approach was chosen because:
+
 - It works well with limited data
 - It's simple and easy to interpret
 - It handles relationships between different economic factors effectively
@@ -53,11 +58,13 @@ Each region gets its own custom model that captures local economic patterns. The
 Two composite indices help compare regions:
 
 **Labour & Productivity Index** measures:
+
 - Employment and unemployment rates
 - Job availability
 - Economic efficiency
 
 **Economic Structure & Human Capital Index** captures:
+
 - Education levels
 - Knowledge-intensive employment
 - Industry diversification
@@ -74,6 +81,7 @@ When you input a scenario (like "What if tourism grows by 20%?"):
 ## Getting Started
 
 ### Installation
+
 ```bash
 pip install flask pandas numpy plotly geopandas folium branca openai tiktoken
 ```
@@ -81,11 +89,13 @@ pip install flask pandas numpy plotly geopandas folium branca openai tiktoken
 ### Setup
 
 Set your OpenAI API key:
+
 ```bash
 export OPENAI_API_KEY='your-api-key-here'
 ```
 
 ### Running the App
+
 ```bash
 python app.py
 ```
@@ -96,7 +106,7 @@ Open your browser to `http://localhost:5000`
 
 1. **Explore Maps**: Choose different economic indicators from the dropdown
 2. **View Trends**: Use the time slider to see how regions changed over the years
-3. **Test Scenarios**: 
+3. **Test Scenarios**:
    - Switch to "Map + Chat" mode
    - Describe an economic scenario
    - See how it would affect different regions
